@@ -1,0 +1,683 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="97e94f4f-bcd8-498e-9fcb-252b3f7a9e49" name="Default Changelist" comment="" />
+    <ignored path="$PROJECT_DIR$/out/" />
+    <ignored path="$PROJECT_DIR$/.gradle/" />
+    <ignored path="$PROJECT_DIR$/build/" />
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/Extractor.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="265">
+              <caret line="33" selection-start-line="33" selection-end-line="33" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/atlas/PDFInfoExtractor.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="899">
+              <caret line="57" column="18" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
+              <folding>
+                <element signature="e#50#190#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/canto/SongDownloader.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="102">
+              <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/canto/SongInfo.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" selection-start-line="7" selection-end-line="7" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/BirdInfo.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="136">
+              <caret line="8" column="30" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="30" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/atlas/PaintExtractor.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="255">
+              <caret line="22" selection-start-line="22" selection-end-line="22" />
+              <folding>
+                <element signature="e#50#327#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/Main.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/atlas/PageImageExtractor.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="245">
+              <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+              <folding>
+                <element signature="e#50#846#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Kotlin Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>drawImage</find>
+      <find>pint</find>
+    </findStrings>
+    <replaceStrings>
+      <replace />
+    </replaceStrings>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/main/java/ExtractInfoFromAtlasulPasarilor2005.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/Main.kt" />
+        <option value="$PROJECT_DIR$/src/main/java/ro/adriantosca/cipcirip/datagather/Main.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/Main.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/datagather/Main.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/PaintExtractor.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/ExtractInfoFromAtlasulPasarilor2005.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/atlas/ExtractInfoFromAtlasulPasarilor2005.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/Main.kt" />
+        <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/atlas/PaintExtractor.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/atlas/SongInfo.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/atlas/SongDownloader.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/atlas/Extractor.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/atlas/PageImageExtractor.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/canto/SongDownloader.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/BirdInfo.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/atlas/PDFInfoExtractor.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/Extractor.kt" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" fullScreen="true">
+    <option name="width" value="1680" />
+    <option name="height" value="1050" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <hideEmptyPackages ProjectPane="true" />
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="ro.adriantosca.cipcirip.datagather" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datagather" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="ro.adriantosca.cipcirip.datagather" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datagather" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ro.adriantosca.cipcirip.datagather" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datagather" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+            </path>
+            <path>
+              <item name="ro.adriantosca.cipcirip.datagather" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datagather" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="kotlin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ro.adriantosca.cipcirip.datagather" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datagather" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="kotlin" type="462c0819:PsiDirectoryNode" />
+              <item name="datagather" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ro.adriantosca.cipcirip.datagather" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datagather" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="kotlin" type="462c0819:PsiDirectoryNode" />
+              <item name="datagather" type="462c0819:PsiDirectoryNode" />
+              <item name="atlas" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ro.adriantosca.cipcirip.datagather" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datagather" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
+              <item name="kotlin" type="462c0819:PsiDirectoryNode" />
+              <item name="datagather" type="462c0819:PsiDirectoryNode" />
+              <item name="canto" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.38878676" />
+  </component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/kotlin/datagather" />
+      <recent name="$PROJECT_DIR$/src/main/kotlin" />
+      <recent name="$PROJECT_DIR$/src/main/java/ro/adriantosca/cipcirip/datagather" />
+    </key>
+    <key name="MoveClassesOrPackagesDialog.RECENTS_KEY">
+      <recent name="" />
+    </key>
+    <key name="MoveKotlinTopLevelDeclarationsDialog.RECENTS_KEY">
+      <recent name="ro.adriantosca.cipcirip.datagather" />
+      <recent name="ro.adriantosca.cipcirip.datagather.canto" />
+      <recent name="ro.adriantosca.cipcirip.datagather.atlas" />
+    </key>
+    <key name="CreateKotlinClassDialog.RecentsKey">
+      <recent name="ro.adriantosca.cipcirip.datagather" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="ro.adriantosca.cipcirip.datagather.MainKt" type="JetRunConfigurationType" factoryName="Kotlin" temporary="true" nameIsGenerated="true">
+      <module name="ro.adriantosca.cipcirip.ro.adriantosca.cipcirip.datagather.main" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" value="ro.adriantosca.cipcirip.datagather.MainKt" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="ro.adriantosca.cipcirip.datagather.MainKt" type="JetRunConfigurationType" factoryName="Kotlin" temporary="true">
+      <module name="ro.adriantosca.cipcirip.ro.adriantosca.cipcirip.datagather.main" />
+      <option name="VM_PARAMETERS" value="" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="ALTERNATIVE_JRE_PATH_ENABLED" value="false" />
+      <option name="ALTERNATIVE_JRE_PATH" />
+      <option name="PASS_PARENT_ENVS" value="true" />
+      <option name="MAIN_CLASS_NAME" value="ro.adriantosca.cipcirip.datagather.MainKt" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Kotlin.ro.adriantosca.cipcirip.datagather.MainKt" />
+        <item itemvalue="Kotlin.ro.adriantosca.cipcirip.datagather.MainKt" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="97e94f4f-bcd8-498e-9fcb-252b3f7a9e49" name="Default Changelist" comment="" />
+      <created>1554833923334</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1554833923334</updated>
+      <workItem from="1554833929220" duration="35008000" />
+      <workItem from="1556987846747" duration="7080000" />
+      <workItem from="1557289420762" duration="15000" />
+      <workItem from="1558068951012" duration="270000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="42373000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25885227" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Favorites" order="3" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32959184" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3255102" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" order="8" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Version Control" order="11" />
+      <window_info anchor="bottom" id="Build" order="12" weight="0.32959184" />
+      <window_info anchor="bottom" id="Messages" order="13" weight="0.32959184" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Gradle" order="3" />
+      <window_info anchor="right" id="Maven" order="4" />
+      <window_info anchor="right" id="Database" order="5" />
+      <window_info anchor="right" id="Palette&#9;" order="6" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/../../readme/readmecomplexitymatchadmin/Import.js" />
+        <option value="$PROJECT_DIR$/../../readme/readmecomplexitymatchadmin/export.js" />
+      </list>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="kotlin-line">
+          <url>file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/atlas/PaintExtractor.kt</url>
+          <line>287</line>
+          <properties />
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="debuggerHistoryManager">
+    <expressions id="breakpointCondition">
+      <expression>
+        <expression-string>percentAway&lt;0.1</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>x==2150</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>x==650</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+    <expressions id="evaluateExpression">
+      <expression>
+        <expression-string>selectedRow.select(&quot;td&quot;)</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>isRightLength(cols)</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>isKnown(cols)</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>isKnown(cols) &amp;&amp; isRightLength(cols)</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>0 &lt; cols.size &amp;&amp; isKnown(cols) &amp;&amp; isRightLength(cols)</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>findXNonWhite(pageImage, 2700)</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>findXNonWhite(pageImage, 2000)</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>findXNonWhite(pageImage, 2500)</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+      <expression>
+        <expression-string>findXNonWhite(pageImage, 2800)</expression-string>
+        <language-id>kotlin</language-id>
+        <evaluation-mode>EXPRESSION</evaluation-mode>
+      </expression>
+    </expressions>
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.3.21/224a3bcfa1c088dd5d7c4a3958a68427b44c65dc/kotlin-stdlib-common-1.3.21-sources.jar!/kotlin/text/Strings.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="446">
+          <caret line="1025" column="45" lean-forward="true" selection-start-line="1025" selection-start-column="45" selection-end-line="1025" selection-end-column="45" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.3.21/b8815e48fb45e94821287365bd9ce8623f459ac7/kotlin-stdlib-1.3.21-sources.jar!/kotlin/text/StringsJVM.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="426" column="25" selection-start-line="426" selection-start-column="25" selection-end-line="426" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.pdfbox/pdfbox/2.0.14/7b20b71dda1ec55cdd0229e7b899fb62f521f096/pdfbox-2.0.14-sources.jar!/org/apache/pdfbox/text/PDFTextStripper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="214">
+          <caret line="157" column="16" selection-start-line="157" selection-start-column="16" selection-end-line="157" selection-end-column="16" />
+          <folding>
+            <element signature="e#39151#39152#0" expanded="true" />
+            <element signature="e#39189#39190#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.pdfbox/pdfbox/2.0.14/7b20b71dda1ec55cdd0229e7b899fb62f521f096/pdfbox-2.0.14-sources.jar!/org/apache/pdfbox/pdmodel/PDPageTree.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-2546">
+          <caret line="39" column="13" selection-start-line="39" selection-start-column="13" selection-end-line="39" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.pdfbox/pdfbox/2.0.14/7b20b71dda1ec55cdd0229e7b899fb62f521f096/pdfbox-2.0.14-sources.jar!/org/apache/pdfbox/pdmodel/PDDocument.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="1467" column="7" lean-forward="true" selection-start-line="1467" selection-start-column="7" selection-end-line="1467" selection-end-column="7" />
+          <folding>
+            <element signature="e#55797#55798#0" expanded="true" />
+            <element signature="e#55851#55852#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.pdfbox/pdfbox/2.0.14/7b20b71dda1ec55cdd0229e7b899fb62f521f096/pdfbox-2.0.14-sources.jar!/org/apache/pdfbox/rendering/PDFRenderer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="221">
+          <caret line="225" column="25" selection-start-line="225" selection-start-column="25" selection-end-line="225" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/src.zip!/java/awt/image/BufferedImageOp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="57" column="16" lean-forward="true" selection-start-line="57" selection-start-column="16" selection-end-line="57" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/src.zip!/java/awt/Graphics2D.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="222">
+          <caret line="558" column="22" selection-start-line="558" selection-start-column="22" selection-end-line="558" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.pdfbox/pdfbox/2.0.14/7b20b71dda1ec55cdd0229e7b899fb62f521f096/pdfbox-2.0.14-sources.jar!/org/apache/pdfbox/pdfparser/PDFStreamParser.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="156">
+          <caret line="49" column="76" lean-forward="true" selection-start-line="49" selection-start-column="76" selection-end-line="49" selection-end-column="76" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_202.jdk/Contents/Home/src.zip!/java/awt/image/BufferedImage.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-11070">
+          <caret line="920" column="37" selection-start-line="920" selection-start-column="37" selection-end-line="920" selection-end-column="37" />
+          <folding>
+            <element signature="e#37710#37711#0" expanded="true" />
+            <element signature="e#37786#37787#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jsoup/jsoup/1.11.3/871302b15d8cee9bfb393c4f1d0386b17646d8d1/jsoup-1.11.3-sources.jar!/org/jsoup/select/Elements.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" selection-start-line="3" selection-end-line="3" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jsoup/jsoup/1.11.3/871302b15d8cee9bfb393c4f1d0386b17646d8d1/jsoup-1.11.3-sources.jar!/org/jsoup/nodes/Element.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="212">
+          <caret line="361" column="15" selection-start-line="361" selection-start-column="15" selection-end-line="361" selection-end-column="15" />
+          <folding>
+            <element signature="e#12210#12211#0" expanded="true" />
+            <element signature="e#12264#12265#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/build.gradle">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="272">
+          <caret line="16" column="18" selection-start-line="16" selection-start-column="18" selection-end-line="16" selection-end-column="18" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/Extractor.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="265">
+          <caret line="33" selection-start-line="33" selection-end-line="33" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/canto/SongDownloader.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="9" column="21" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/canto/SongInfo.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="119">
+          <caret line="7" selection-start-line="7" selection-end-line="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/BirdInfo.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="8" column="30" selection-start-line="8" selection-start-column="24" selection-end-line="8" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/atlas/PaintExtractor.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="255">
+          <caret line="22" selection-start-line="22" selection-end-line="22" />
+          <folding>
+            <element signature="e#50#327#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/Main.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="23" selection-start-line="3" selection-start-column="23" selection-end-line="3" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/atlas/PDFInfoExtractor.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="899">
+          <caret line="57" column="18" selection-start-line="57" selection-start-column="18" selection-end-line="57" selection-end-column="18" />
+          <folding>
+            <element signature="e#50#190#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/atlas/PageImageExtractor.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="245">
+          <caret line="69" lean-forward="true" selection-start-line="69" selection-end-line="69" />
+          <folding>
+            <element signature="e#50#846#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>Kotlin</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.38878676" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>ro.adriantosca.cipcirip.ro.adriantosca.cipcirip.datagather</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.38878676" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>11</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>Gradle: commons-logging:commons-logging:1.2</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

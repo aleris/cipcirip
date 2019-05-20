@@ -1,0 +1,263 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 1,
+    "identityHash": "eeabec1fa78a4f656cd21d5b208a8983",
+    "entities": [
+      {
+        "tableName": "Organism",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `code` TEXT NOT NULL, `nameRom` TEXT NOT NULL, `nameEng` TEXT NOT NULL, `nameLat` TEXT NOT NULL, `regnum` TEXT NOT NULL, `phylum` TEXT NOT NULL, `classis` TEXT NOT NULL, `ordo` TEXT NOT NULL, `familia` TEXT NOT NULL, `genus` TEXT NOT NULL, `species` TEXT NOT NULL, `description` TEXT NOT NULL, `hasSound` INTEGER NOT NULL, `soundAttribution` TEXT NOT NULL, `hasImagePaint` INTEGER NOT NULL, `imagePaintAttribution` TEXT NOT NULL, `hasImageMale` INTEGER NOT NULL, `imageMaleAttribution` TEXT NOT NULL, `hasImageFemale` INTEGER NOT NULL, `imageFemaleAttribution` TEXT NOT NULL, `viewedTimestamp` INTEGER NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "code",
+            "columnName": "code",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nameRom",
+            "columnName": "nameRom",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nameEng",
+            "columnName": "nameEng",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nameLat",
+            "columnName": "nameLat",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "regnum",
+            "columnName": "regnum",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "phylum",
+            "columnName": "phylum",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "classis",
+            "columnName": "classis",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ordo",
+            "columnName": "ordo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "familia",
+            "columnName": "familia",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "genus",
+            "columnName": "genus",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "species",
+            "columnName": "species",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hasSound",
+            "columnName": "hasSound",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "soundAttribution",
+            "columnName": "soundAttribution",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hasImagePaint",
+            "columnName": "hasImagePaint",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "imagePaintAttribution",
+            "columnName": "imagePaintAttribution",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hasImageMale",
+            "columnName": "hasImageMale",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "imageMaleAttribution",
+            "columnName": "imageMaleAttribution",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "hasImageFemale",
+            "columnName": "hasImageFemale",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "imageFemaleAttribution",
+            "columnName": "imageFemaleAttribution",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "viewedTimestamp",
+            "columnName": "viewedTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Place",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `name` TEXT NOT NULL, `region` TEXT NOT NULL, `latitude` REAL NOT NULL, `longitude` REAL NOT NULL)",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "region",
+            "columnName": "region",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "latitude",
+            "columnName": "latitude",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "longitude",
+            "columnName": "longitude",
+            "affinity": "REAL",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": true
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "OrganismToPlace",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`organismId` INTEGER NOT NULL, `placeId` INTEGER NOT NULL, PRIMARY KEY(`organismId`, `placeId`), FOREIGN KEY(`organismId`) REFERENCES `Organism`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`placeId`) REFERENCES `Place`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "organismId",
+            "columnName": "organismId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "placeId",
+            "columnName": "placeId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "organismId",
+            "placeId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_OrganismToPlace_placeId",
+            "unique": false,
+            "columnNames": [
+              "placeId"
+            ],
+            "createSql": "CREATE  INDEX `index_OrganismToPlace_placeId` ON `${TABLE_NAME}` (`placeId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Organism",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "organismId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          },
+          {
+            "table": "Place",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "placeId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, \"eeabec1fa78a4f656cd21d5b208a8983\")"
+    ]
+  }
+}
