@@ -40,7 +40,7 @@ class PDFInfoExtractor {
         val nameEng = toTitleCase(matchResult.groupValues[2].trim())
         val nameLat = matchResult.groupValues[3].trim()
         val regnum = matchResult.groupValues[4].trim()
-        var phylum = ""
+        val phylum = ""
         val classis = matchResult.groupValues[5].trim()
         val ordo = matchResult.groupValues[6].trim()
         val familia = matchResult.groupValues[7].trim()

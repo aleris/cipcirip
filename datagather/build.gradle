@@ -15,6 +15,7 @@ dependencies {
     implementation 'org.apache.pdfbox:pdfbox:2.0.14'
     implementation 'org.apache.commons:commons-csv:1.6'
     implementation 'org.jsoup:jsoup:1.11.3'
+    implementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.9.9'
 }
 
 compileKotlin {

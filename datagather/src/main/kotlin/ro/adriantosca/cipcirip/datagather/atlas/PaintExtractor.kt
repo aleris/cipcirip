@@ -3,6 +3,7 @@ package ro.adriantosca.cipcirip.datagather.atlas
 import org.apache.pdfbox.pdmodel.PDDocument
 import ro.adriantosca.cipcirip.datagather.BirdInfo
 import java.awt.Color
+import java.awt.RenderingHints
 import java.awt.image.BufferedImage
 import java.awt.image.BufferedImage.TYPE_INT_RGB
 import java.io.File
@@ -10,8 +11,8 @@ import java.nio.file.Paths
 import javax.imageio.ImageIO
 
 class PaintExtractor {
-    fun extract(document: PDDocument, mapInfo: Map<String, BirdInfo>, directoryPath: String) {
-        mapInfo.values.forEach { birdInfo ->
+    fun extract(document: PDDocument, birdInfoList: List<BirdInfo>, directoryPath: String) {
+        birdInfoList.forEach { birdInfo ->
             extract(document, birdInfo, directoryPath)
         }
     }
@@ -64,8 +65,27 @@ class PaintExtractor {
 
         val squareImage = makeSquaredImage(trimmed)
 
-//        val squareImage = pageImage
-        return squareImage
+        val resized = if (1024 < squareImage.width)
+            resizeImage(squareImage, 1024, 1024)
+        else
+            squareImage
+
+        return resized
+    }
+
+    private fun resizeImage(original: BufferedImage, newWidth: Int, newHeight: Int): BufferedImage {
+        val resized = BufferedImage(newWidth, newHeight, original.type)
+        val g = resized.createGraphics()
+        g.setRenderingHint(
+            RenderingHints.KEY_INTERPOLATION,
+            RenderingHints.VALUE_INTERPOLATION_BILINEAR
+        )
+        g.drawImage(
+            original, 0, 0, newWidth, newHeight, 0, 0, original.width,
+            original.height, null
+        )
+        g.dispose()
+        return resized
     }
 
     private fun hasMap(pageImage: BufferedImage): Boolean {

@@ -3,50 +3,80 @@ package ro.adriantosca.cipcirip.datagather.canto
 import org.jsoup.Jsoup
 import org.jsoup.select.Elements
 import ro.adriantosca.cipcirip.datagather.BirdInfo
+import ro.adriantosca.cipcirip.datagather.NameUtils
 import java.io.File
 
 class SongDownloader {
 
-    fun findAndDownloadSongs(birdMapInfo: Map<String, BirdInfo>, directoryPath: String) {
+    fun findAndDownloadSongs(birdInfoList: List<BirdInfo>, directoryPath: String) {
         File(directoryPath).mkdirs()
-        birdMapInfo.values.forEach { birdInfo ->
-            val file = File("$directoryPath/${birdInfo.code}.mp3")
-            if (!file.exists()) {
-                val found = findSong(birdInfo)
-                if (null == found) {
+        birdInfoList.forEach { birdInfo ->
+            val infoFile = File("$directoryPath/${birdInfo.code}.txt")
+            val soundFile = File("$directoryPath/${birdInfo.code}.mp3")
+            if (!infoFile.exists()) {
+                infoFile.parentFile.mkdirs()
+                val songInfo = findSong(birdInfo)
+                if (null == songInfo) {
                     println("NOT found: ${birdInfo.nameLat}")
                 } else {
-                    val recordist = found.recordist
-                    birdInfo.soundRecordist = recordist
-                    val link = "http:${found.link}"
-                    try {
-                        val bytes = Jsoup
-                            .connect(link)
-                            .ignoreContentType(true)
-                            .execute()
-                            .bodyAsBytes()
-                        file.writeBytes(bytes)
-                        println("$file OK")
-                    } catch (e: Exception) {
-                        println("ERR download: ${birdInfo.code}: ${e.message}")
-                    }
+                    val infoText = """
+${songInfo.link}
+${songInfo.recordist}
+                    """.trimIndent()
+                    infoFile.writeText(infoText)
+                    birdInfo.soundLink = songInfo.link
+                    birdInfo.soundAttribution = songInfo.recordist
+                    saveSoundFileIfNotExists(soundFile, songInfo.link, birdInfo)
                 }
             } else {
-                println("Exists: $file, skipping.")
+                val infoTextLines = infoFile.readText().lines()
+                birdInfo.soundLink = infoTextLines[0]
+                birdInfo.soundAttribution = infoTextLines[1]
+                println("Exists: $infoFile, skipping.")
             }
+        }
+    }
+
+    private fun saveSoundFileIfNotExists(
+        file: File,
+        link: String,
+        birdInfo: BirdInfo
+    ) {
+        if (!file.exists()) {
+            saveSoundFile(link, file, birdInfo)
+        } else {
+            println("Exists: $file, skipping.")
+        }
+    }
+
+    private fun saveSoundFile(
+        link: String,
+        file: File,
+        birdInfo: BirdInfo
+    ) {
+        try {
+            val bytes = Jsoup
+                .connect(link)
+                .ignoreContentType(true)
+                .execute()
+                .bodyAsBytes()
+            file.writeBytes(bytes)
+            println("$file OK")
+        } catch (e: Exception) {
+            println("ERR download: ${birdInfo.code}: ${e.message}")
         }
     }
 
     private fun findSong(birdInfo: BirdInfo): SongInfo? {
         val songList = arrayListOf<SongInfo>()
-        val queryNameLat = firstNameLat(birdInfo).replace(" ", "+")
+        val queryNameLat = NameUtils.queryName(NameUtils.firstNameLat(birdInfo))
         val pages = IntRange(1, 2)
         extractListMultiPage(birdInfo, queryNameLat, pages, songList)
         if (songList.isEmpty()) {
             // empty? try second latin name if has one
-            val queryNameLatSecond = secondNameLat(birdInfo)
+            val queryNameLatSecond = NameUtils.secondNameLat(birdInfo)
             if (null != queryNameLatSecond) {
-                extractListMultiPage(birdInfo, queryNameLatSecond, pages, songList)
+                extractListMultiPage(birdInfo, NameUtils.queryName(queryNameLatSecond), pages, songList)
             }
             // still empty? try english name
             if (songList.isEmpty()) {
@@ -60,23 +90,8 @@ class SongDownloader {
         val take2 = sortedByLength.firstOrNull { it.length.startsWith("0:2") }
         if (null != take2) return take2
         val take3 = sortedByLength.firstOrNull { it.length.startsWith("0:3") }
-        return take3
-    }
-
-    private fun firstNameLat(birdInfo: BirdInfo): String {
-        val nameLat = birdInfo.nameLat
-        if (nameLat.contains('(')) {
-            return nameLat.substringBefore('(')
-        }
-        return nameLat
-    }
-
-    private fun secondNameLat(birdInfo: BirdInfo): String? {
-        val nameLat = birdInfo.nameLat
-        if (nameLat.contains('(')) {
-            return nameLat.substringAfter('(').substringBefore(')')
-        }
-        return null
+        if (null != take3) return take3
+        return sortedByLength.firstOrNull()
     }
 
     private fun extractListMultiPage(
@@ -104,7 +119,8 @@ class SongDownloader {
             if (0 < cols.size && isKnown(cols)) {
                 val length = cols[2].text()
                 val recordist = cols[3].text()
-                val link = row.selectFirst("td div div").attr("data-xc-filepath")
+                val linkPath = row.selectFirst("td div div").attr("data-xc-filepath")
+                val link = "http:$linkPath"
                 songList.add(SongInfo(birdCode, length, recordist, link))
             }
         }
