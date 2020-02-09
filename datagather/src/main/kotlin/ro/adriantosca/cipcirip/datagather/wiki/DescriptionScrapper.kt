@@ -11,17 +11,25 @@ import java.nio.file.Paths
 class DescriptionScrapper {
     private val mapper = jacksonObjectMapper()
 
-    fun fillInto(birdInfoList: List<BirdInfo>, directoryPath: String) {
+    fun fillInto(
+        birdInfoList: List<BirdInfo>,
+        directoryPath: String,
+        skipNotExisting: Boolean
+    ) {
         birdInfoList.forEach { birdInfo ->
             val fileRom = Paths.get("$directoryPath/${birdInfo.code}.ro.txt").toFile()
             val fileEng = Paths.get("$directoryPath/${birdInfo.code}.eng.txt").toFile()
             if (!fileRom.exists()) {
-                fileRom.parentFile.mkdirs()
-                birdInfo.descriptionRom = scrapDescription(birdInfo, "ro")
-                birdInfo.descriptionEng = scrapDescription(birdInfo, "en")
-                fileRom.writeText(birdInfo.descriptionRom)
-                fileEng.writeText(birdInfo.descriptionEng)
-                println("${birdInfo.code}.txt OK.")
+                if (skipNotExisting) {
+                    println("Does not exists: ${birdInfo.code}.txt, but skipping.")
+                } else {
+                    fileRom.parentFile.mkdirs()
+                    birdInfo.descriptionRom = scrapDescription(birdInfo, "ro")
+                    birdInfo.descriptionEng = scrapDescription(birdInfo, "en")
+                    fileRom.writeText(birdInfo.descriptionRom)
+                    fileEng.writeText(birdInfo.descriptionEng)
+                    println("${birdInfo.code}.txt OK.")
+                }
             } else {
                 birdInfo.descriptionRom = fileRom.readText()
                 birdInfo.descriptionEng = fileEng.readText()

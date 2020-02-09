@@ -1,5 +1,5 @@
 package ro.adriantosca.cipcirip.datagather
 
 fun main() {
-    Extractor().extract()
+    Extractor().extract(true)
 }

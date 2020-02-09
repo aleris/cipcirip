@@ -11,25 +11,31 @@ import java.nio.file.Paths
 import javax.imageio.ImageIO
 
 class PaintExtractor {
-    fun extract(document: PDDocument, birdInfoList: List<BirdInfo>, directoryPath: String) {
+    fun extract(document: PDDocument, birdInfoList: List<BirdInfo>, directoryPath: String,
+                skipNotExisting: Boolean) {
         birdInfoList.forEach { birdInfo ->
-            extract(document, birdInfo, directoryPath)
+            extract(document, birdInfo, directoryPath, skipNotExisting)
         }
     }
 
-    private fun extract(document: PDDocument, birdInfo: BirdInfo, directoryPath: String) {
+    private fun extract(document: PDDocument, birdInfo: BirdInfo, directoryPath: String,
+                        skipNotExisting: Boolean) {
         val file = File("$directoryPath/${birdInfo.code}.jpg")
         if (!file.exists()) {
-            val pageImage = PageImageExtractor().extract(document, birdInfo)
+            if (skipNotExisting) {
+                println("Does not exists ${file.path}, but skipping.")
+            } else {
+                val pageImage = PageImageExtractor().extract(document, birdInfo)
 
-            val birdImage = extractBirdPaintImage(pageImage)
+                val birdImage = extractBirdPaintImage(pageImage)
 
-            applyFixes(birdInfo.code, birdImage)
+                applyFixes(birdInfo.code, birdImage)
 
-            Paths.get(directoryPath).toFile().mkdirs()
-            ImageIO.write(birdImage, "jpg", file)
+                Paths.get(directoryPath).toFile().mkdirs()
+                ImageIO.write(birdImage, "jpg", file)
 //            paintDocument.save(File("/Users/at/Projects/CipCirip/datagather/data/${birdInfo.code}.pdf"))
-            println("Extracted ${file.path}.")
+                println("Extracted ${file.path}.")
+            }
         } else {
             println("Exists ${file.path}, skipping.")
         }
@@ -66,7 +72,7 @@ class PaintExtractor {
         val squareImage = makeSquaredImage(trimmed)
 
         val resized = if (1024 < squareImage.width)
-            resizeImage(squareImage, 1024, 1024)
+            resizeImage(squareImage, 768, 768)
         else
             squareImage
 

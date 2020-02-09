@@ -8,25 +8,33 @@ import java.io.File
 
 class SongDownloader {
 
-    fun findAndDownloadSongs(birdInfoList: List<BirdInfo>, directoryPath: String) {
+    fun findAndDownloadSongs(
+        birdInfoList: List<BirdInfo>,
+        directoryPath: String,
+        skipNotExisting: Boolean
+    ) {
         File(directoryPath).mkdirs()
         birdInfoList.forEach { birdInfo ->
             val infoFile = File("$directoryPath/${birdInfo.code}.txt")
             val soundFile = File("$directoryPath/${birdInfo.code}.mp3")
             if (!infoFile.exists()) {
-                infoFile.parentFile.mkdirs()
-                val songInfo = findSong(birdInfo)
-                if (null == songInfo) {
-                    println("NOT found: ${birdInfo.nameLat}")
+                if (skipNotExisting) {
+                    println("Does not exists: $infoFile, but skipping.")
                 } else {
-                    val infoText = """
+                    infoFile.parentFile.mkdirs()
+                    val songInfo = findSong(birdInfo)
+                    if (null == songInfo) {
+                        println("NOT found: ${birdInfo.nameLat}")
+                    } else {
+                        val infoText = """
 ${songInfo.link}
 ${songInfo.recordist}
                     """.trimIndent()
-                    infoFile.writeText(infoText)
-                    birdInfo.soundLink = songInfo.link
-                    birdInfo.soundAttribution = songInfo.recordist
-                    saveSoundFileIfNotExists(soundFile, songInfo.link, birdInfo)
+                        infoFile.writeText(infoText)
+                        birdInfo.soundLink = songInfo.link
+                        birdInfo.soundAttribution = songInfo.recordist
+                        saveSoundFileIfNotExists(soundFile, songInfo.link, birdInfo)
+                    }
                 }
             } else {
                 val infoTextLines = infoFile.readText().lines()

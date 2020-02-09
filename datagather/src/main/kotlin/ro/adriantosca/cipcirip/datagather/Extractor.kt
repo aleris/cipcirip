@@ -4,13 +4,14 @@ import org.apache.pdfbox.pdmodel.PDDocument
 import ro.adriantosca.cipcirip.datagather.atlas.PDFInfoExtractor
 import ro.adriantosca.cipcirip.datagather.atlas.PaintExtractor
 import ro.adriantosca.cipcirip.datagather.canto.SongDownloader
+import ro.adriantosca.cipcirip.datagather.csv.CsvPrinter
 import ro.adriantosca.cipcirip.datagather.wiki.DescriptionScrapper
 import java.io.File
 
 class Extractor {
     private val dataDirectoryPath = "/Users/at/Projects/CipCirip/datagather/data"
 
-    fun extract() {
+    fun extract(skipNotExisting: Boolean) {
         val file = File("$dataDirectoryPath/Atlasul-Pasarilor-2015.pdf")
         PDDocument.load(file).use { document ->
             print("Extracting bird info ...")
@@ -24,19 +25,19 @@ class Extractor {
             val genDirectoryPath = "$dataDirectoryPath/gen"
 
             println("Getting descriptions:")
-            DescriptionScrapper().fillInto(birdInfoList, "$genDirectoryPath/descriptions")
+            DescriptionScrapper().fillInto(birdInfoList, "$genDirectoryPath/descriptions", skipNotExisting)
             println("OK")
 
             println("Extracting paintings:")
-            PaintExtractor().extract(document, birdInfoList, "$genDirectoryPath/paintings")
+            PaintExtractor().extract(document, birdInfoList, "$genDirectoryPath/paintings", skipNotExisting)
             println("OK")
 
             println("Finding songs:")
-            SongDownloader().findAndDownloadSongs(birdInfoList, "$genDirectoryPath/songs")
+            SongDownloader().findAndDownloadSongs(birdInfoList, "$genDirectoryPath/songs", skipNotExisting)
             println("OK")
 
             print("Printing CSV ...")
-            CsvPrinter().printCsv(birdInfoList, "$genDirectoryPath/organisms.csv")
+            CsvPrinter().print(birdInfoList, "$genDirectoryPath/out")
             println(" OK")
         }
     }

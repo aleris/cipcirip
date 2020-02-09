@@ -5,8 +5,8 @@ import androidx.room.PrimaryKey
 
 @Entity
 data class Place(
-    @PrimaryKey(autoGenerate = true)
-    var id: Long,
+    @PrimaryKey
+    var id: Int,
     var nameRom: String,
     var nameEng: String,
     var regionRom: String,
@@ -21,11 +21,5 @@ data class Place(
         const val id = "id"
 
         fun name(language: Language) = "name$language"
-    }
-
-    object MediaCode {
-        const val photo = "photo"
-
-        fun photoOther(order: Int) = "photoOther_$order"
     }
 }

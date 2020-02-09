@@ -5,20 +5,20 @@ import org.koin.core.inject
 import ro.adriantosca.cipcirip.model.*
 
 class PlaceRepository: KoinComponent {
-    private val attributionDao by inject<AttributionDao>()
+    private val mediaDao by inject<MediaDao>()
     private val placeDao by inject<PlaceDao>()
-    private val placeAttributionDao by inject<PlaceAttributionDao>()
+    private val placeMediaDao by inject<PlaceMediaDao>()
 
     fun insert(place: Place,
-               photoAttribution: Attribution
+               photoMedia: Media
     ) {
         placeDao.insert(place)
-        insertAttribution(photoAttribution, place.id, Place.MediaCode.photo)
+        insertMedia(photoMedia, place.id)
     }
 
-    private fun insertAttribution(attribution: Attribution, placeId: Long, mediaCode: String) {
-        attributionDao.insert(attribution)
-        val placeAttribution = PlaceAttribution(placeId, mediaCode, attribution.id)
-        placeAttributionDao.insert(placeAttribution)
+    private fun insertMedia(media: Media, placeId: Int) {
+        mediaDao.insert(media)
+        val placeMedia = PlaceMedia(placeId, media.id)
+        placeMediaDao.insert(placeMedia)
     }
 }

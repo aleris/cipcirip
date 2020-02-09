@@ -5,27 +5,27 @@ import androidx.room.ForeignKey
 import androidx.room.Index
 
 @Entity(
-    primaryKeys = [OrganismPlace.Contract.organismId, OrganismPlace.Contract.placeId],
-    indices = [Index(OrganismPlace.Contract.placeId)],
+    primaryKeys = [OrganismMedia.Contract.organismId, OrganismMedia.Contract.mediaId],
+    indices = [Index(OrganismMedia.Contract.mediaId)],
     foreignKeys = [
         ForeignKey(
             entity = Organism::class,
             parentColumns = [Organism.Contract.id],
-            childColumns = [OrganismPlace.Contract.organismId]
+            childColumns = [OrganismMedia.Contract.organismId]
         ),
         ForeignKey(
-            entity = Place::class,
-            parentColumns = [Place.Contract.id],
-            childColumns = [OrganismPlace.Contract.placeId]
+            entity = Media::class,
+            parentColumns = [Media.Contract.id],
+            childColumns = [OrganismMedia.Contract.mediaId]
         )
     ])
-data class OrganismPlace(
+data class OrganismMedia(
     var organismId: Int,
-    var placeId: Int
+    var mediaId: Int
 ) {
     object Contract {
         const val id = "id"
         const val organismId = "organismId"
-        const val placeId = "placeId"
+        const val mediaId = "mediaId"
     }
 }

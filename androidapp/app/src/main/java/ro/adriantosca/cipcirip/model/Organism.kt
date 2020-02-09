@@ -1,12 +1,14 @@
 package ro.adriantosca.cipcirip.model
 
 import androidx.room.Entity
+import androidx.room.ForeignKey
+import androidx.room.Index
 import androidx.room.PrimaryKey
 
-@Entity
+@Entity(indices = [Index(Organism.Contract.code)])
 data class Organism(
-    @PrimaryKey(autoGenerate = true)
-    var id: Long = 0,
+    @PrimaryKey
+    var id: Int,
     var code: String,
     var nameLat: String,
     var nameRom: String,
@@ -20,24 +22,13 @@ data class Organism(
     var species: String,
     var descriptionRom: String,
     var descriptionEng: String,
-    var hasSound: Boolean,
-    var hasPaint: Boolean,
-    var hasPhotoMale: Boolean, // by convention, the first photo is male (even for plants)
-    var hasPhotoFemale: Boolean,
     var viewedTimestamp: Long
 ) {
     object Contract {
         const val id = "id"
+        const val mediaPaintId = "mediaPaintId"
+        const val code = "code"
 
         fun name(language: Language) = "name$language"
-    }
-
-    object MediaCode {
-        const val sound = "sound"
-        const val paint = "paint"
-        const val photoMale = "photoMale"
-        const val photoFemale = "photoFemale"
-
-        fun photoOther(order: Int) = "photoOther_$order"
     }
 }

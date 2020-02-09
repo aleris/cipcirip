@@ -9,6 +9,6 @@ class Migration1to2 : Migration(1, 2) {
 //        database.execSQL("insert into PlaceFTS4(PlaceFts) values ('rebuild')")
 //
 //        database.execSQL("create virtual table if not exists OrganismFts using FTS4(content = `Organism`, nameLat, nameRon, nameEng, descriptionRon, descriptionEng)")
-//        database.execSQL("insert into OrganismFTS4(OrganismFts) values ('rebuild')")
+//        database.execSQL("insert into OrganismFTS(OrganismFts) values ('rebuild')")
     }
 }
