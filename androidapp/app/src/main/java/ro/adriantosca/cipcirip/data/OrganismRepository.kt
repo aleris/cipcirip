@@ -36,4 +36,6 @@ class OrganismRepository: KoinComponent {
     fun update(attribution: Attribution) = attributionDao.update(attribution)
 
     fun update(media: Media) = mediaDao.update(media)
+
+    fun allOrganisms() = organismDao.all()
 }

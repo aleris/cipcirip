@@ -1,9 +1,6 @@
 package ro.adriantosca.cipcirip.model
 
-import androidx.room.Entity
-import androidx.room.ForeignKey
-import androidx.room.Index
-import androidx.room.PrimaryKey
+import androidx.room.*
 
 @Entity(indices = [Index(Organism.Contract.code)])
 data class Organism(
@@ -11,6 +8,7 @@ data class Organism(
     var id: Int,
     var code: String,
     var nameLat: String,
+    @ColumnInfo(collate = ColumnInfo.UNICODE)
     var nameRom: String,
     var nameEng: String,
     var regnum: String,
@@ -20,6 +18,7 @@ data class Organism(
     var familia: String,
     var genus: String,
     var species: String,
+    @ColumnInfo(collate = ColumnInfo.UNICODE)
     var descriptionRom: String,
     var descriptionEng: String,
     var viewedTimestamp: Long

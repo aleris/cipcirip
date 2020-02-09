@@ -3,6 +3,7 @@
           package="ro.adriantosca.cipcirip">
 
     <application
+            android:name=".CipCiripApplication"
             android:allowBackup="true"
             android:icon="@mipmap/ic_launcher"
             android:label="@string/app_name"
