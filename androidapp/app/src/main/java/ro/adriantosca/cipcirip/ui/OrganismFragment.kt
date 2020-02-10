@@ -25,7 +25,7 @@ class OrganismFragment : Fragment(), KoinComponent {
     private val organismViewModel by viewModel<OrganismViewModel>()
 
     // TODO: Customize parameters
-    private var columnCount = 1
+    private var columnCount = 4
 
     private var listenerOrganism: OnOrganismListFragmentInteractionListener? = null
 

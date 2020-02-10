@@ -11,7 +11,7 @@ import ro.adriantosca.cipcirip.ui.OrganismViewModel
 val appModule = module {
     single { DataImporter(androidApplication()) }
     single {
-        AppDatabase.deleteDatabase(androidApplication())
+//        AppDatabase.deleteDatabase(androidApplication())
         AppDatabase.buildDatabase(androidApplication(), get())
     }
     single { get<AppDatabase>().attributionDao() }
