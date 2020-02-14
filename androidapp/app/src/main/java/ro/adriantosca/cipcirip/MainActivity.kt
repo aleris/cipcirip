@@ -9,6 +9,7 @@ import android.widget.SearchView
 import androidx.appcompat.app.AppCompatActivity
 import androidx.lifecycle.ViewModelProvider
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import ro.adriantosca.cipcirip.data.AppDatabase
 import ro.adriantosca.cipcirip.model.Organism
 import ro.adriantosca.cipcirip.ui.OrganismFragment
 import ro.adriantosca.cipcirip.ui.OrganismViewModel

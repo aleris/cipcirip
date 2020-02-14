@@ -28,7 +28,7 @@ abstract class OrganismDao {
     @Query("select Organism.* from Organism inner join OrganismPlace on Organism.id = OrganismPlace.organismId where OrganismPlace.placeId = :placeId order by :order")
     abstract fun listForPlace(placeId: Long, order: String = Organism.Contract.name(Language.Default)): LiveData<List<Organism>>
 
-    @Query("select Organism.* from Organism inner join OrganismFTS on Organism.id = OrganismFTS.rowid where OrganismFTS match :searchText order by :order")
+    @Query("select Organism.* from Organism inner join OrganismFTS on Organism.id = OrganismFTS.rowid where OrganismFTS.nameRom match :searchText order by :order")
     abstract fun find(searchText: String, order: String = Organism.Contract.name(Language.Default)): LiveData<List<Organism>>
 
     @Query("select Count(id) from Organism")
