@@ -19,5 +19,4 @@ val appModule = module {
     single { get<AppDatabase>().organismDao() }
     single { get<AppDatabase>().organismMediaDao() }
     single { OrganismRepository() }
-    viewModel { OrganismViewModel(get())}
 }

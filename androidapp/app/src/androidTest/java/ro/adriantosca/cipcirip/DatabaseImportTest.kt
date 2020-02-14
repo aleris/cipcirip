@@ -35,7 +35,7 @@ class DatabaseImportTest: AutoCloseKoinTest() {
             modules(appModule)
         }
         db.organismDao().all()
-        Thread.sleep(10000)
+        Thread.sleep(3000)
     }
 
     @Test
@@ -45,7 +45,10 @@ class DatabaseImportTest: AutoCloseKoinTest() {
 
     @Test
     fun findWildcard() {
-//        assertTrue(db.organismDao().find("vrabia", "code").isNotEmpty())
+        println("aaaaaa>>>>>>>>")
+        println(db.organismDao().find("v*", "code").value)
+        println(db.organismDao().all().value)
+        assertTrue(db.organismDao().find("vrabia", "code").value.isNullOrEmpty())
     }
 
     @After

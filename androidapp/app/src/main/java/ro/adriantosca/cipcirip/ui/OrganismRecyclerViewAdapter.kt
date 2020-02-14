@@ -2,31 +2,30 @@ package ro.adriantosca.cipcirip.ui
 
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
-import androidx.recyclerview.widget.RecyclerView
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
+import androidx.core.content.ContextCompat
+import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-
-
-import ro.adriantosca.cipcirip.ui.OrganismFragment.OnOrganismListFragmentInteractionListener
-
 import kotlinx.android.synthetic.main.fragment_organism.view.*
 import ro.adriantosca.cipcirip.R
 import ro.adriantosca.cipcirip.model.Organism
+import ro.adriantosca.cipcirip.ui.OrganismFragment.OnOrganismListFragmentInteractionListener
 
 /**
  * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
  * specified [OnOrganismListFragmentInteractionListener].
  */
 class OrganismRecyclerViewAdapter(
-    private val mValues: List<Organism>,
     private val mListenerOrganism: OnOrganismListFragmentInteractionListener?
 ) : RecyclerView.Adapter<OrganismRecyclerViewAdapter.ViewHolder>() {
 
+    private val mValues = ArrayList<Organism>()
     private val mOnClickListener: View.OnClickListener
+    private var onNothingFound: (() -> Unit)? = null
 
     init {
         mOnClickListener = View.OnClickListener { v ->
@@ -47,7 +46,7 @@ class OrganismRecyclerViewAdapter(
         Glide
             .with(holder.mView.context)
             .load(Uri.parse("file:///android_asset/img/${item.code}.jpg"))
-            .placeholder(ColorDrawable(holder.mImageView.getResources().getColor(R.color.design_default_color_background)))
+            .placeholder(ColorDrawable(ContextCompat.getColor(holder.mImageView.context, R.color.colorPlaceholder)))
             .into(holder.mImageView)
 
         with(holder.mView) {
@@ -58,6 +57,18 @@ class OrganismRecyclerViewAdapter(
 
     override fun getItemCount(): Int = mValues.size
 
+    fun update(list: List<Organism>) {
+        this.mValues.clear()
+        this.mValues.addAll(list)
+        this.notifyDataSetChanged()
+
+//        val diffCallback = RatingDiffCallback(ratings, newRating)
+//        val diffResult = DiffUtil.calculateDiff(diffCallback)
+//        ratings.clear()
+//        ratings.addAll(rating)
+//        diffResult.dispatchUpdatesTo(this)
+    }
+
     inner class ViewHolder(val mView: View) : RecyclerView.ViewHolder(mView) {
         val mNameView: TextView = mView.name
         val mImageView: ImageView = mView.image
@@ -66,4 +77,34 @@ class OrganismRecyclerViewAdapter(
             return super.toString() + " '" + mNameView.text + "'"
         }
     }
+
+//    override fun getFilter(): Filter {
+//        return object : Filter() {
+//            private val filterResults = FilterResults()
+//            override fun performFiltering(constraint: CharSequence?): FilterResults {
+//
+//                if (constraint.isNullOrBlank()) {
+//                    searchableList.addAll(originalList)
+//                } else {
+//                    val searchResults = originalList.filter { it.getSearchCriteria().contains(constraint) }
+//                    searchableList.addAll(searchResults)
+//                }
+//                return if (constraint.isNullOrBlank()) {
+//                    filterResults.also {
+//                        it.values =
+//                    }
+//                } else {
+//
+//                }
+//            }
+//
+//            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
+//                // no need to use "results" filtered list provided by this method.
+//                if (searchableList.isNullOrEmpty()) {
+//                    onNothingFound?.invoke()
+//                }
+//                notifyDataSetChanged()
+//            }
+//        }
+//    }
 }

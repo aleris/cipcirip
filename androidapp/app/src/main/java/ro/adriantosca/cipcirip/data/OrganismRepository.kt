@@ -2,10 +2,7 @@ package ro.adriantosca.cipcirip.data
 
 import org.koin.core.KoinComponent
 import org.koin.core.inject
-import ro.adriantosca.cipcirip.model.Attribution
-import ro.adriantosca.cipcirip.model.Media
-import ro.adriantosca.cipcirip.model.Organism
-import ro.adriantosca.cipcirip.model.OrganismMedia
+import ro.adriantosca.cipcirip.model.*
 
 class OrganismRepository: KoinComponent {
     private val organismDao by inject<OrganismDao>()
@@ -28,7 +25,10 @@ class OrganismRepository: KoinComponent {
 
     fun exists(media: Media) = mediaDao.exists(media.id)
 
-    fun exists(organismMedia: OrganismMedia) = organismMediaDao.exists(organismMedia.organismId, organismMedia.mediaId)
+    fun exists(organismMedia: OrganismMedia) = organismMediaDao.exists(
+        organismMedia.organismId,
+        organismMedia.mediaId
+    )
 
 
     fun update(organism: Organism) = organismDao.update(organism)
@@ -38,4 +38,7 @@ class OrganismRepository: KoinComponent {
     fun update(media: Media) = mediaDao.update(media)
 
     fun allOrganisms() = organismDao.all()
+
+    fun find(searchText: String, order: String = Organism.Contract.name(Language.Default)) =
+        organismDao.find(searchText, order)
 }

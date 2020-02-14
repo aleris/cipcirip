@@ -8,8 +8,6 @@ import androidx.room.Fts4
 data class OrganismFTS(
     var nameLat: String,
     var nameRom: String,
-    var nameEng: String,
-    var descriptionRom: String,
-    var descriptionEng: String
+    var nameEng: String
 )
 

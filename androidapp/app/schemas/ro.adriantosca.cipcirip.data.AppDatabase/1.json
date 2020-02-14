@@ -2,7 +2,7 @@
   "formatVersion": 1,
   "database": {
     "version": 1,
-    "identityHash": "9cad7a8ab26acf71c0e5f7693b6232a4",
+    "identityHash": "a984a154ad9587971396227058354a9c",
     "entities": [
       {
         "tableName": "Attribution",
@@ -109,7 +109,7 @@
       },
       {
         "tableName": "Organism",
-        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `code` TEXT NOT NULL, `nameLat` TEXT NOT NULL, `nameRom` TEXT NOT NULL, `nameEng` TEXT NOT NULL, `regnum` TEXT NOT NULL, `phylum` TEXT NOT NULL, `classis` TEXT NOT NULL, `ordo` TEXT NOT NULL, `familia` TEXT NOT NULL, `genus` TEXT NOT NULL, `species` TEXT NOT NULL, `descriptionRom` TEXT NOT NULL, `descriptionEng` TEXT NOT NULL, `viewedTimestamp` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `code` TEXT NOT NULL, `nameLat` TEXT NOT NULL, `nameRom` TEXT NOT NULL COLLATE UNICODE, `nameEng` TEXT NOT NULL, `regnum` TEXT NOT NULL, `phylum` TEXT NOT NULL, `classis` TEXT NOT NULL, `ordo` TEXT NOT NULL, `familia` TEXT NOT NULL, `genus` TEXT NOT NULL, `species` TEXT NOT NULL, `descriptionRom` TEXT NOT NULL COLLATE UNICODE, `descriptionEng` TEXT NOT NULL, `viewedTimestamp` INTEGER NOT NULL, PRIMARY KEY(`id`))",
         "fields": [
           {
             "fieldPath": "id",
@@ -235,11 +235,11 @@
         "contentSyncTriggers": [
           "CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_OrganismFTS_BEFORE_UPDATE BEFORE UPDATE ON `Organism` BEGIN DELETE FROM `OrganismFTS` WHERE `docid`=OLD.`rowid`; END",
           "CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_OrganismFTS_BEFORE_DELETE BEFORE DELETE ON `Organism` BEGIN DELETE FROM `OrganismFTS` WHERE `docid`=OLD.`rowid`; END",
-          "CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_OrganismFTS_AFTER_UPDATE AFTER UPDATE ON `Organism` BEGIN INSERT INTO `OrganismFTS`(`docid`, `nameLat`, `nameRom`, `nameEng`, `descriptionRom`, `descriptionEng`) VALUES (NEW.`rowid`, NEW.`nameLat`, NEW.`nameRom`, NEW.`nameEng`, NEW.`descriptionRom`, NEW.`descriptionEng`); END",
-          "CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_OrganismFTS_AFTER_INSERT AFTER INSERT ON `Organism` BEGIN INSERT INTO `OrganismFTS`(`docid`, `nameLat`, `nameRom`, `nameEng`, `descriptionRom`, `descriptionEng`) VALUES (NEW.`rowid`, NEW.`nameLat`, NEW.`nameRom`, NEW.`nameEng`, NEW.`descriptionRom`, NEW.`descriptionEng`); END"
+          "CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_OrganismFTS_AFTER_UPDATE AFTER UPDATE ON `Organism` BEGIN INSERT INTO `OrganismFTS`(`docid`, `nameLat`, `nameRom`, `nameEng`) VALUES (NEW.`rowid`, NEW.`nameLat`, NEW.`nameRom`, NEW.`nameEng`); END",
+          "CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_OrganismFTS_AFTER_INSERT AFTER INSERT ON `Organism` BEGIN INSERT INTO `OrganismFTS`(`docid`, `nameLat`, `nameRom`, `nameEng`) VALUES (NEW.`rowid`, NEW.`nameLat`, NEW.`nameRom`, NEW.`nameEng`); END"
         ],
         "tableName": "OrganismFTS",
-        "createSql": "CREATE VIRTUAL TABLE IF NOT EXISTS `${TABLE_NAME}` USING FTS4(`nameLat` TEXT NOT NULL, `nameRom` TEXT NOT NULL, `nameEng` TEXT NOT NULL, `descriptionRom` TEXT NOT NULL, `descriptionEng` TEXT NOT NULL, content=`Organism`)",
+        "createSql": "CREATE VIRTUAL TABLE IF NOT EXISTS `${TABLE_NAME}` USING FTS4(`nameLat` TEXT NOT NULL, `nameRom` TEXT NOT NULL, `nameEng` TEXT NOT NULL, content=`Organism`)",
         "fields": [
           {
             "fieldPath": "nameLat",
@@ -256,18 +256,6 @@
           {
             "fieldPath": "nameEng",
             "columnName": "nameEng",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "descriptionRom",
-            "columnName": "descriptionRom",
-            "affinity": "TEXT",
-            "notNull": true
-          },
-          {
-            "fieldPath": "descriptionEng",
-            "columnName": "descriptionEng",
             "affinity": "TEXT",
             "notNull": true
           }
@@ -599,7 +587,7 @@
     "views": [],
     "setupQueries": [
       "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
-      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '9cad7a8ab26acf71c0e5f7693b6232a4')"
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'a984a154ad9587971396227058354a9c')"
     ]
   }
 }

@@ -7,6 +7,8 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
@@ -22,10 +24,10 @@ import ro.adriantosca.cipcirip.model.Organism
  */
 class OrganismFragment : Fragment(), KoinComponent {
 
-    private val organismViewModel by viewModel<OrganismViewModel>()
+    private lateinit var organismViewModel: OrganismViewModel
 
     // TODO: Customize parameters
-    private var columnCount = 4
+    private var columnCount = 3
 
     private var listenerOrganism: OnOrganismListFragmentInteractionListener? = null
 
@@ -34,6 +36,10 @@ class OrganismFragment : Fragment(), KoinComponent {
 
         arguments?.let {
             columnCount = it.getInt(ARG_COLUMN_COUNT)
+        }
+
+        activity?.let {
+            organismViewModel = ViewModelProvider(it).get(OrganismViewModel::class.java)
         }
     }
 
@@ -50,14 +56,10 @@ class OrganismFragment : Fragment(), KoinComponent {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                organismViewModel.allOrganisms.observe(viewLifecycleOwner, Observer { list ->
-                    adapter =
-                        OrganismRecyclerViewAdapter(
-                            list,
-                            listenerOrganism
-                        )
+                adapter = OrganismRecyclerViewAdapter(listenerOrganism)
+                organismViewModel.getFilteredOrganisms().observe(viewLifecycleOwner, Observer { list ->
+                    (adapter as OrganismRecyclerViewAdapter).update(list)
                 })
-
             }
         }
         return view
