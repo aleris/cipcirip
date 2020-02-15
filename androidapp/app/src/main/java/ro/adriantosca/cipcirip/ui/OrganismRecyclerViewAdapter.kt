@@ -47,11 +47,11 @@ class OrganismRecyclerViewAdapter(
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val item = mValues[position]
-        holder.mNameView.text = item.nameRom
+        holder.mNameView.text = item.nameRom // "${item.code} ${item.nameRom}"
         Glide
             .with(holder.mView.context)
             .load(
-                Uri.parse("file:///android_asset/img/${item.code}.jpg")
+                Uri.parse("file:///android_asset/media/paintings/${item.code}.jpg")
             )
             .placeholder(
                 ColorDrawable(
@@ -80,7 +80,7 @@ class OrganismRecyclerViewAdapter(
             with(holder) {
                 mPlayButton.visibility = View.INVISIBLE
                 try {
-                    val afd = mPlayButton.context.assets.openFd("songs/${item.code}.mp3")
+                    val afd = mPlayButton.context.assets.openFd("media/songs/${item.code}.mp3")
                     val mediaPlayer = MediaPlayer()
                     mediaPlayer.setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
                     mediaPlayer.setOnCompletionListener {

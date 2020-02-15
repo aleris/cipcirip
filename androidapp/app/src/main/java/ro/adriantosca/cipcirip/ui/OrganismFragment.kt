@@ -27,7 +27,7 @@ class OrganismFragment : Fragment(), KoinComponent {
     private lateinit var organismViewModel: OrganismViewModel
 
     // TODO: Customize parameters
-    private var columnCount = 3
+    private var columnCount = 2
 
     private var listenerOrganism: OnOrganismListFragmentInteractionListener? = null
 
