@@ -55,7 +55,7 @@ class OrganismRecyclerViewAdapter(
             )
             .placeholder(
                 ColorDrawable(
-                    ContextCompat.getColor(holder.mImageView.context, R.color.colorPlaceholder)
+                    ContextCompat.getColor(holder.mImageView.context, R.color.placeholderColor)
                 )
             )
             .into(holder.mImageView)

@@ -54,7 +54,7 @@ class OrganismDetailsFragment : Fragment() {
                 )
                 .placeholder(
                     ColorDrawable(
-                        ContextCompat.getColor(image.context, R.color.colorPlaceholder)
+                        ContextCompat.getColor(image.context, R.color.placeholderColor)
                     )
                 )
                 .into(image)
