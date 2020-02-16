@@ -11,18 +11,18 @@ import android.widget.TextView
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
-import kotlinx.android.synthetic.main.fragment_organism.view.*
+import kotlinx.android.synthetic.main.organism_list_item_fragment.view.*
 import ro.adriantosca.cipcirip.R
 import ro.adriantosca.cipcirip.model.Organism
-import ro.adriantosca.cipcirip.ui.OrganismFragment.OnOrganismListFragmentInteractionListener
+import ro.adriantosca.cipcirip.ui.OrganismListFragment.OnOrganismClick
 import java.io.FileNotFoundException
 
 /**
  * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
- * specified [OnOrganismListFragmentInteractionListener].
+ * specified [OnOrganismClick].
  */
 class OrganismRecyclerViewAdapter(
-    private val mListenerOrganism: OnOrganismListFragmentInteractionListener?
+    private val mListenerOrganism: OnOrganismClick?
 ) : RecyclerView.Adapter<OrganismRecyclerViewAdapter.ViewHolder>() {
 
     private val mValues = ArrayList<Organism>()
@@ -38,7 +38,7 @@ class OrganismRecyclerViewAdapter(
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context)
-            .inflate(R.layout.fragment_organism, parent, false)
+            .inflate(R.layout.organism_list_item_fragment, parent, false)
         return ViewHolder(view)
     }
 
@@ -67,13 +67,13 @@ class OrganismRecyclerViewAdapter(
 
 //        holder.mPlayButton.visibility = item. View.INVISIBLE
         holder.mPlayButton.setOnClickListener {
-            currentHolder?.also {
-                it.mPlayButton.visibility = View.VISIBLE
-                it.mStopButton.visibility = View.GONE
+            currentHolder?.apply {
+                mPlayButton.visibility = View.VISIBLE
+                mStopButton.visibility = View.GONE
             }
-            currentMediaPlayer?.also {
-                if (it.isPlaying) {
-                    it.stop()
+            currentMediaPlayer?.apply {
+                if (isPlaying) {
+                    stop()
                 }
             }
             currentHolder = holder
@@ -84,9 +84,9 @@ class OrganismRecyclerViewAdapter(
                     val mediaPlayer = MediaPlayer()
                     mediaPlayer.setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
                     mediaPlayer.setOnCompletionListener {
-                        currentHolder?.also {
-                            it.mPlayButton.visibility = View.VISIBLE
-                            it.mStopButton.visibility = View.GONE
+                        currentHolder?.apply {
+                            mPlayButton.visibility = View.VISIBLE
+                            mStopButton.visibility = View.GONE
                         }
                     }
                     mediaPlayer.setOnPreparedListener {
@@ -107,9 +107,9 @@ class OrganismRecyclerViewAdapter(
                 mPlayButton.visibility = View.VISIBLE
                 mStopButton.visibility = View.GONE
             }
-            currentMediaPlayer?.also {
-                if (it.isPlaying) {
-                    it.stop()
+            currentMediaPlayer?.apply {
+                if (isPlaying) {
+                    stop()
                 }
             }
         }

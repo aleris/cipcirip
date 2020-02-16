@@ -41,4 +41,9 @@ class OrganismRepository: KoinComponent {
 
     fun find(searchText: String, order: String = Organism.Contract.name(Language.Default)) =
         organismDao.find(searchText, order)
+
+    fun get(id: Int) = organismDao.get(id)
+
+    fun findMediaWithAttributionWithMediaType(organismId: Int, mediaType: MediaType) =
+        organismMediaDao.findMediaWithAttributionWithMediaType(organismId, mediaType)
 }

@@ -2,6 +2,7 @@ package ro.adriantosca.cipcirip.model
 
 import androidx.room.*
 
+
 @Entity(
     foreignKeys = [
         ForeignKey(
@@ -26,6 +27,17 @@ data class Media(
         const val attributionId = "attributionId"
     }
 }
+
+data class MediaWithAttribution(
+    var id: Int,
+    var type: MediaType,
+    var property: MediaProperty,
+    var isLocal: Boolean,
+    var externalLink: String?,
+    var attributionId: Int,
+    var description: String,
+    var source: String
+)
 
 enum class MediaType {
     Sound,

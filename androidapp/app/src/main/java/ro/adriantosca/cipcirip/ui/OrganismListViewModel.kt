@@ -7,7 +7,7 @@ import org.koin.core.KoinComponent
 import org.koin.core.inject
 import ro.adriantosca.cipcirip.data.OrganismRepository
 
-class OrganismViewModel: ViewModel(), KoinComponent {
+class OrganismListViewModel: ViewModel(), KoinComponent {
     private val organismRepository by inject<OrganismRepository>()
 
     private val searchTextLiveData = MutableLiveData<String>("")

@@ -24,7 +24,6 @@ data class OrganismPlace(
     var placeId: Int
 ) {
     object Contract {
-        const val id = "id"
         const val organismId = "organismId"
         const val placeId = "placeId"
     }

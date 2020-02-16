@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:id="@+id/nav_graph"
+        app:startDestination="@id/organismListFragment">
+
+    <fragment
+            android:id="@+id/organismListFragment"
+            android:name="ro.adriantosca.cipcirip.ui.OrganismListFragment"
+            android:label="organism_list_fragment"
+            tools:layout="@layout/organism_list_fragment">
+        <action
+                android:id="@+id/action_organismFragment_to_organismDetailsFragment"
+                app:destination="@id/organismDetailsFragment" />
+    </fragment>
+    <fragment
+            android:id="@+id/organismDetailsFragment"
+            android:name="ro.adriantosca.cipcirip.ui.OrganismDetailsFragment"
+            android:label="organism_details_fragment"
+            tools:layout="@layout/organism_details_fragment" >
+        <argument
+                android:name="organismId"
+                app:argType="integer" />
+    </fragment>
+</navigation>

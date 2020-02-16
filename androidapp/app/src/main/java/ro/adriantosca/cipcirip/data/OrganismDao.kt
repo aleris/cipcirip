@@ -20,13 +20,13 @@ abstract class OrganismDao {
     abstract fun update(organism: Organism)
 
     @Query("select Media.* from Media inner join OrganismMedia on Media.id = OrganismMedia.mediaId inner join Organism on OrganismMedia.organismId = Organism.id where Organism.id = :organismId and Media.type = :mediaType")
-    abstract fun listMediaOfType(organismId: Long, mediaType: String): LiveData<List<Media>>
+    abstract fun listMediaOfType(organismId: Int, mediaType: String): LiveData<List<Media>>
 
     @Query("select * from Organism where id = :id")
-    abstract fun get(id: Long): LiveData<Organism>
+    abstract fun get(id: Int): LiveData<Organism>
 
     @Query("select Organism.* from Organism inner join OrganismPlace on Organism.id = OrganismPlace.organismId where OrganismPlace.placeId = :placeId order by :order")
-    abstract fun listForPlace(placeId: Long, order: String = Organism.Contract.name(Language.Default)): LiveData<List<Organism>>
+    abstract fun listForPlace(placeId: Int, order: String = Organism.Contract.name(Language.Default)): LiveData<List<Organism>>
 
     @Query("select Organism.* from Organism inner join OrganismFTS on Organism.id = OrganismFTS.rowid where OrganismFTS.nameRom match :searchText order by :order")
     abstract fun find(searchText: String, order: String = Organism.Contract.name(Language.Default)): LiveData<List<Organism>>
