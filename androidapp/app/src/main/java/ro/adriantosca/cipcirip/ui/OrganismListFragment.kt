@@ -14,16 +14,19 @@ import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import org.koin.core.KoinComponent
+import org.koin.core.inject
 import ro.adriantosca.cipcirip.R
+import ro.adriantosca.cipcirip.SingleSongPlayer
 import ro.adriantosca.cipcirip.model.Organism
 
 /**
  * A fragment representing a list of Items.
  * Activities containing this fragment MUST implement the
- * [OrganismListFragment.OnOrganismClick] interface.
+ * [OrganismListFragment.OnOrganismListItemClick] interface.
  */
 class OrganismListFragment : Fragment(), KoinComponent {
 
+    private val singleSongPlayer by inject<SingleSongPlayer>()
     private lateinit var organismListViewModel: OrganismListViewModel
 
     private var columnCount = 2
@@ -48,14 +51,17 @@ class OrganismListFragment : Fragment(), KoinComponent {
 
         // Set the adapter
         if (view is RecyclerView) {
-            val viewAdapter = OrganismRecyclerViewAdapter(object: OnOrganismClick {
-                override fun onListFragmentInteraction(organism: Organism) {
-                    view.findNavController().navigate(
-                        OrganismListFragmentDirections
-                            .actionOrganismFragmentToOrganismDetailsFragment(organism.id)
-                    )
+            val viewAdapter = OrganismRecyclerViewAdapter(
+                singleSongPlayer,
+                object: OnOrganismListItemClick {
+                    override fun onListFragmentInteraction(organism: Organism) {
+                        view.findNavController().navigate(
+                            OrganismListFragmentDirections
+                                .actionOrganismFragmentToOrganismDetailsFragment(organism.id)
+                        )
+                    }
                 }
-            })
+            )
             with(view) {
                 layoutManager = when {
                     columnCount <= 1 -> LinearLayoutManager(context)
@@ -101,7 +107,7 @@ class OrganismListFragment : Fragment(), KoinComponent {
         })
     }
 
-    interface OnOrganismClick {
+    interface OnOrganismListItemClick {
         fun onListFragmentInteraction(organism: Organism)
     }
 

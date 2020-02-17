@@ -1,7 +1,6 @@
 package ro.adriantosca.cipcirip.ui
 
 import android.graphics.drawable.ColorDrawable
-import android.media.MediaPlayer
 import android.net.Uri
 import android.view.LayoutInflater
 import android.view.View
@@ -13,26 +12,26 @@ import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.organism_list_item_fragment.view.*
 import ro.adriantosca.cipcirip.R
+import ro.adriantosca.cipcirip.SingleSongPlayer
 import ro.adriantosca.cipcirip.model.Organism
-import ro.adriantosca.cipcirip.ui.OrganismListFragment.OnOrganismClick
-import java.io.FileNotFoundException
+import ro.adriantosca.cipcirip.ui.OrganismListFragment.OnOrganismListItemClick
 
 /**
  * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
- * specified [OnOrganismClick].
+ * specified [OnOrganismListItemClick].
  */
 class OrganismRecyclerViewAdapter(
-    private val mListenerOrganism: OnOrganismClick?
+    private val mSingleSongPlayer: SingleSongPlayer,
+    private val mOrganismItemOnListItemClick: OnOrganismListItemClick?
 ) : RecyclerView.Adapter<OrganismRecyclerViewAdapter.ViewHolder>() {
 
     private val mValues = ArrayList<Organism>()
     private val mOnClickListener: View.OnClickListener
-    private var onNothingFound: (() -> Unit)? = null
 
     init {
         mOnClickListener = View.OnClickListener { v ->
             val item = v.tag as Organism
-            mListenerOrganism?.onListFragmentInteraction(item)
+            mOrganismItemOnListItemClick?.onListFragmentInteraction(item)
         }
     }
 
@@ -42,16 +41,16 @@ class OrganismRecyclerViewAdapter(
         return ViewHolder(view)
     }
 
-    private var currentMediaPlayer: MediaPlayer? = null
-    private var currentHolder: ViewHolder? = null
-
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
-        val item = mValues[position]
-        holder.mNameView.text = item.nameRom // "${item.code} ${item.nameRom}"
+        val organism = mValues[position]
+
+        showAsPlaying(holder, organism == mSingleSongPlayer.currentPlayingOrganism)
+
+        holder.mNameView.text = organism.nameRom // "${item.code} ${item.nameRom}"
         Glide
             .with(holder.mView.context)
             .load(
-                Uri.parse("file:///android_asset/media/paintings/${item.code}.jpg")
+                Uri.parse("file:///android_asset/media/paintings/${organism.code}.jpg")
             )
             .placeholder(
                 ColorDrawable(
@@ -61,57 +60,34 @@ class OrganismRecyclerViewAdapter(
             .into(holder.mImageView)
 
         with(holder.mView) {
-            tag = item
+            tag = organism
             setOnClickListener(mOnClickListener)
         }
 
 //        holder.mPlayButton.visibility = item. View.INVISIBLE
         holder.mPlayButton.setOnClickListener {
-            currentHolder?.apply {
-                mPlayButton.visibility = View.VISIBLE
-                mStopButton.visibility = View.GONE
-            }
-            currentMediaPlayer?.apply {
-                if (isPlaying) {
-                    stop()
+            holder.mPlayButton.visibility = View.INVISIBLE
+            mSingleSongPlayer.play(
+                organism,
+                {
+                    showAsPlaying(holder, true)
+                },
+                {
+                    showAsPlaying(holder, false)
                 }
-            }
-            currentHolder = holder
-            with(holder) {
-                mPlayButton.visibility = View.INVISIBLE
-                try {
-                    val afd = mPlayButton.context.assets.openFd("media/songs/${item.code}.mp3")
-                    val mediaPlayer = MediaPlayer()
-                    mediaPlayer.setDataSource(afd.fileDescriptor, afd.startOffset, afd.length)
-                    mediaPlayer.setOnCompletionListener {
-                        currentHolder?.apply {
-                            mPlayButton.visibility = View.VISIBLE
-                            mStopButton.visibility = View.GONE
-                        }
-                    }
-                    mediaPlayer.setOnPreparedListener {
-                        it.start()
-                        mPlayButton.visibility = View.GONE
-                        mStopButton.visibility = View.VISIBLE
-                    }
-                    mediaPlayer.prepareAsync()
-                    currentMediaPlayer = mediaPlayer
-                } catch (ex: FileNotFoundException) {
-                    println(ex)
-                }
-            }
+            )
         }
 
         holder.mStopButton.setOnClickListener {
-            with(holder) {
-                mPlayButton.visibility = View.VISIBLE
-                mStopButton.visibility = View.GONE
-            }
-            currentMediaPlayer?.apply {
-                if (isPlaying) {
-                    stop()
-                }
-            }
+            mSingleSongPlayer.stop()
+            showAsPlaying(holder, false)
+        }
+    }
+
+    private fun showAsPlaying(holder: ViewHolder, playing: Boolean) {
+        with (holder) {
+            mPlayButton.visibility = if (playing) View.GONE else View.VISIBLE
+            mStopButton.visibility = if (playing) View.VISIBLE else View.GONE
         }
     }
 
@@ -139,34 +115,4 @@ class OrganismRecyclerViewAdapter(
             return super.toString() + " '" + mNameView.text + "'"
         }
     }
-
-//    override fun getFilter(): Filter {
-//        return object : Filter() {
-//            private val filterResults = FilterResults()
-//            override fun performFiltering(constraint: CharSequence?): FilterResults {
-//
-//                if (constraint.isNullOrBlank()) {
-//                    searchableList.addAll(originalList)
-//                } else {
-//                    val searchResults = originalList.filter { it.getSearchCriteria().contains(constraint) }
-//                    searchableList.addAll(searchResults)
-//                }
-//                return if (constraint.isNullOrBlank()) {
-//                    filterResults.also {
-//                        it.values =
-//                    }
-//                } else {
-//
-//                }
-//            }
-//
-//            override fun publishResults(constraint: CharSequence?, results: FilterResults?) {
-//                // no need to use "results" filtered list provided by this method.
-//                if (searchableList.isNullOrEmpty()) {
-//                    onNothingFound?.invoke()
-//                }
-//                notifyDataSetChanged()
-//            }
-//        }
-//    }
 }

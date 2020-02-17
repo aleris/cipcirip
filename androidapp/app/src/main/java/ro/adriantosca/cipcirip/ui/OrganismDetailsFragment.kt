@@ -4,6 +4,7 @@ import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
 import android.view.*
+import android.widget.ImageButton
 import android.widget.ImageView
 import android.widget.TextView
 import androidx.appcompat.app.AppCompatActivity
@@ -13,7 +14,9 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.fragment.navArgs
 import com.bumptech.glide.Glide
+import org.koin.android.ext.android.inject
 import ro.adriantosca.cipcirip.R
+import ro.adriantosca.cipcirip.SingleSongPlayer
 import ro.adriantosca.cipcirip.model.MediaWithAttribution
 
 
@@ -24,6 +27,7 @@ class OrganismDetailsFragment : Fragment() {
     }
 
     private lateinit var viewModel: OrganismDetailsViewModel
+    private val singleSongPlayer by inject<SingleSongPlayer>()
 
     val args: OrganismDetailsFragmentArgs by navArgs()
 
@@ -59,6 +63,19 @@ class OrganismDetailsFragment : Fragment() {
                 )
                 .into(image)
             view.findViewById<TextView>(R.id.description).text = organism.descriptionRom
+
+            showAsPlaying(view, organism == singleSongPlayer.currentPlayingOrganism)
+            view.findViewById<ImageButton>(R.id.play).setOnClickListener {
+                singleSongPlayer.play(organism, {
+                    showAsPlaying(view, true)
+                }, {
+                    showAsPlaying(view, false)
+                })
+            }
+            view.findViewById<ImageButton>(R.id.stop).setOnClickListener {
+                singleSongPlayer.stop()
+                showAsPlaying(view, false)
+            }
         })
 
         viewModel.getMediaPaintWithAttribution().observe(viewLifecycleOwner, Observer { mediaList ->
@@ -80,6 +97,11 @@ class OrganismDetailsFragment : Fragment() {
         })
 
         viewModel.setOrganismId(organismId)
+    }
+
+    private fun showAsPlaying(view: View, playing: Boolean) {
+        view.findViewById<ImageButton>(R.id.play).visibility = if (playing) View.GONE else View.VISIBLE
+        view.findViewById<ImageButton>(R.id.stop).visibility = if (playing) View.VISIBLE else View.GONE
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

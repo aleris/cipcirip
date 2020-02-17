@@ -97,6 +97,8 @@ dependencies {
 
     implementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.10.2'
 
+    implementation 'io.github.microutils:kotlin-logging:1.7.8'
+
     // Testing dependencies
     androidTestImplementation 'org.jetbrains.kotlin:kotlin-test-junit:1.3.61'
     androidTestImplementation 'androidx.test:core:1.2.0'
