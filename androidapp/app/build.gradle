@@ -4,11 +4,13 @@ apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
 apply plugin: 'kotlin-kapt'
 apply plugin: "androidx.navigation.safeargs.kotlin"
+apply plugin: 'com.google.gms.google-services'
+apply plugin: 'com.google.firebase.crashlytics'
 
 android {
     compileSdkVersion rootProject.compileSdkVersion
     defaultConfig {
-        applicationId "ro.adriantosca.cipcirip"
+        applicationId "ro.cipcirip"
         minSdkVersion rootProject.minSdkVersion
         targetSdkVersion rootProject.targetSdkVersion
         versionCode 1
@@ -98,6 +100,9 @@ dependencies {
     implementation 'com.fasterxml.jackson.module:jackson-module-kotlin:2.10.2'
 
     implementation 'io.github.microutils:kotlin-logging:1.7.8'
+
+    implementation 'com.google.firebase:firebase-analytics:17.2.2'
+    implementation 'com.google.firebase:firebase-crashlytics:17.0.0-beta01'
 
     // Testing dependencies
     androidTestImplementation 'org.jetbrains.kotlin:kotlin-test-junit:1.3.61'

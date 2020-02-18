@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "367580682516",
+    "firebase_url": "https://cip-cirip-149.firebaseio.com",
+    "project_id": "cip-cirip-149",
+    "storage_bucket": "cip-cirip-149.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:367580682516:android:59eb86a3432705ed9e0a01",
+        "android_client_info": {
+          "package_name": "ro.cipcirip"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "367580682516-1i8v3dikqqrg1p73h52b91hd7tcsps6u.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDJyeX9pTs03wWi1q05SVvNcQBrWTZ4-WI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "367580682516-1i8v3dikqqrg1p73h52b91hd7tcsps6u.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -7,7 +7,7 @@
 
     <fragment
             android:id="@+id/organismListFragment"
-            android:name="ro.adriantosca.cipcirip.ui.OrganismListFragment"
+            android:name="ro.cipcirip.ui.OrganismListFragment"
             android:label="organism_list_fragment"
             tools:layout="@layout/organism_list_fragment">
         <action
@@ -16,7 +16,7 @@
     </fragment>
     <fragment
             android:id="@+id/organismDetailsFragment"
-            android:name="ro.adriantosca.cipcirip.ui.OrganismDetailsFragment"
+            android:name="ro.cipcirip.ui.OrganismDetailsFragment"
             android:label="organism_details_fragment"
             tools:layout="@layout/organism_details_fragment" >
         <argument
