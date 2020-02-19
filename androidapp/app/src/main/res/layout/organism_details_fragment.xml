@@ -23,6 +23,7 @@
                     android:layout_height="wrap_content"
                     android:adjustViewBounds="true"
                     android:scaleType="fitCenter"
+                    android:layout_marginTop="@dimen/additional_horizontal_margin"
                     app:layout_constraintTop_toTopOf="parent"
                     tools:src="@drawable/accipiter_brevipes" />
 

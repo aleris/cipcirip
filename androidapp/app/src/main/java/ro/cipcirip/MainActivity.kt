@@ -38,6 +38,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+//        throw Exception("Crash test")
 //        AppDatabase.deleteDatabase(this)
 
 //        println("»»»»»»»»»»»»» findMediaWithAttributionWithMediaType:")
