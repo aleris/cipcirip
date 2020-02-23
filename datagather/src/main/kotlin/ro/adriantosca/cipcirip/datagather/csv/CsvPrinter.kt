@@ -31,22 +31,22 @@ class CsvPrinter {
         val organimsMedias = ArrayList<OrganismMedia>()
 
         birdInfoList.forEach { birdInfo ->
-            val soundAttribution = Attribution(nextId(attributions), birdInfo.soundAttribution, birdInfo.soundLink)
+            val soundAttribution = Attribution(nextId(attributions), "${birdInfo.soundRecordist}, XC${birdInfo.soundId}", "www.xeno-canto.org/${birdInfo.soundId}")
             attributions.add(soundAttribution)
 
-            val soundMedia = Media(nextId(medias), MediaType.Sound, MediaProperty.None, false, birdInfo.soundLink, soundAttribution.id)
+            val soundMedia = Media(nextId(medias), MediaType.Sound, MediaProperty.None, birdInfo.soundDownloadLink, soundAttribution.id)
             medias.add(soundMedia)
 
             val paintAttribution = Attribution(nextId(attributions), atlasPaintsAttributionDescription, atlasPaintsAttributionSource)
             attributions.add(paintAttribution)
 
-            val paintMedia = Media(nextId(medias), MediaType.Paint, MediaProperty.None, true, null, paintAttribution.id)
+            val paintMedia = Media(nextId(medias), MediaType.Paint, MediaProperty.None, null, paintAttribution.id)
             medias.add(paintMedia)
 
             val wikiAttribution = Attribution(nextId(attributions), wikipediaAttributionDescription, wikipediaAttributionSource)
             attributions.add(wikiAttribution)
 
-            val wikiMedia = Media(nextId(medias), MediaType.Text, MediaProperty.None, true, null, wikiAttribution.id)
+            val wikiMedia = Media(nextId(medias), MediaType.Text, MediaProperty.None, birdInfo.descriptionEngLink, wikiAttribution.id)
             medias.add(wikiMedia)
 
             val organism = Organism(

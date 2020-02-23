@@ -71,8 +71,8 @@ class PaintExtractor {
 
         val squareImage = makeSquaredImage(trimmed)
 
-        val resized = if (1024 < squareImage.width)
-            resizeImage(squareImage, 768, 768)
+        val resized = if (512 < squareImage.width)
+            resizeImage(squareImage, 512, 512)
         else
             squareImage
 

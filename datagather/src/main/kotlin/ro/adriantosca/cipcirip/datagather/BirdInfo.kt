@@ -13,8 +13,11 @@ data class BirdInfo(var pageNumber: Int, // 1-based
                     var genus: String,
                     var species: String,
                     var descriptionRom: String = "",
+                    var descriptionRomLink: String = "",
                     var descriptionEng: String = "",
+                    var descriptionEngLink: String = "",
                     var paintAttribution: String = "",
-                    var soundLink: String = "",
-                    var soundAttribution: String = ""
+                    var soundDownloadLink: String = "",
+                    var soundRecordist: String = "",
+                    var soundId: String = ""
 )

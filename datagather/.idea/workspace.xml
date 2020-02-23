@@ -2,52 +2,25 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="97e94f4f-bcd8-498e-9fcb-252b3f7a9e49" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../androidapp/app/schemas/data/1/Attribution.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../androidapp/app/schemas/data/1/Media.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../androidapp/app/schemas/data/1/Organism.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../androidapp/app/schemas/data/1/OrganismMedia.csv" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/data/OrganismMediaDao.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/data/csv/OrganismRecord.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/data/csv/PlaceOrganismsRecord.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/data/csv/PlaceRecord.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/model/Media.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/Attribution.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/Language.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/Media.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/Organism.kt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/OrganismMedia.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidapp/.idea/codeStyles/Project.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../androidapp/.idea/codeStyles/Project.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/canto/SongOptimizer.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../androidapp/app/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../androidapp/app/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidapp/app/schemas/data/1.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidapp/app/schemas/ro.adriantosca.cipcirip.data.AppDatabase/1.json" beforeDir="false" afterPath="$PROJECT_DIR$/../androidapp/app/schemas/ro.adriantosca.cipcirip.data.AppDatabase/1.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidapp/app/src/androidTest/java/ro/adriantosca/cipcirip/ExampleInstrumentedTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../androidapp/app/src/androidTest/java/ro/adriantosca/cipcirip/DatabaseImportTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/AppModule.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/AppModule.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/data/AppDatabase.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/data/AppDatabase.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/data/AttributionDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/data/MediaDao.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/data/DataImporter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/data/DataImporter.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/data/OrganismAttributionDao.kt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/data/OrganismDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/data/OrganismDao.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/data/OrganismRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/data/OrganismRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/data/PlaceAttributionDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/data/PlaceMediaDao.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/data/PlaceDao.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/data/PlaceDao.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/data/PlaceRepository.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/data/PlaceRepository.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/geo/GeoHelper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/geo/GeoHelper.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/model/Attribution.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/model/Attribution.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/model/Organism.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/model/Organism.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/model/OrganismAttribution.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/model/OrganismMedia.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/model/Place.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/model/Place.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/model/PlaceAttribution.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../androidapp/app/src/main/java/ro/adriantosca/cipcirip/model/PlaceMedia.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidapp/app/src/test/java/ro/adriantosca/cipcirip/ExampleUnitTest.kt" beforeDir="false" afterPath="$PROJECT_DIR$/../androidapp/app/src/test/java/ro/adriantosca/cipcirip/ExampleUnitTest.kt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidapp/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/../androidapp/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../androidapp/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../androidapp/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../assets/cipcirip.svg" beforeDir="false" afterPath="$PROJECT_DIR$/../assets/cipcirip.svg" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/CsvPrinter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/CsvPrinter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/BirdInfo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/BirdInfo.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/Extractor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/Extractor.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/Main.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/Main.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/atlas/PaintExtractor.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/atlas/PaintExtractor.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/canto/SongDownloader.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/canto/SongDownloader.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/canto/SongInfo.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/canto/SongInfo.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/CsvPrinter.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/CsvPrinter.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/Media.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/Media.kt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/wiki/DescriptionScrapper.kt" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/wiki/DescriptionScrapper.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pictures/carduelis_cannabina/female.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pictures/carduelis_cannabina/male.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pictures/carduelis_cannabina/painting.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pictures/coccothraustes_coccothraustes/female.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pictures/coccothraustes_coccothraustes/male.jpg" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../pictures/coccothraustes_coccothraustes/painting.jpg" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <ignored path="$PROJECT_DIR$/.gradle/" />
@@ -71,8 +44,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/Extractor.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="444">
-              <caret line="39" column="28" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
+            <state relative-caret-position="363">
+              <caret line="46" column="30" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="30" />
             </state>
           </provider>
         </entry>
@@ -80,8 +53,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/CsvPrinter.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="262">
-              <caret line="110" column="46" selection-start-line="110" selection-start-column="46" selection-end-line="110" selection-end-column="46" />
+            <state relative-caret-position="249">
+              <caret line="48" column="113" selection-start-line="48" selection-start-column="113" selection-end-line="48" selection-end-column="113" />
               <folding>
                 <element signature="e#48#402#0" expanded="true" />
               </folding>
@@ -90,46 +63,49 @@
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/build.gradle">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/canto/SongOptimizer.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="459">
-              <caret line="27" selection-start-line="27" selection-end-line="27" />
+            <state relative-caret-position="194">
+              <caret line="18" column="33" lean-forward="true" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+              <folding>
+                <element signature="e#50#159#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/Attribution.kt">
+        <entry file="file://$PROJECT_DIR$/data/gen/out/Attribution.csv">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="46" selection-start-column="46" selection-end-column="46" />
+            <state relative-caret-position="102">
+              <caret line="6" column="58" lean-forward="true" selection-start-line="6" selection-start-column="58" selection-end-line="6" selection-end-column="58" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/Language.kt">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/canto/SongDownloader.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret column="46" selection-start-column="46" selection-end-column="46" />
+            <state relative-caret-position="204">
+              <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/Organism.kt">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/Main.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34">
-              <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
+            <state relative-caret-position="51">
+              <caret line="3" column="20" lean-forward="true" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/OrganismMedia.kt">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/BirdInfo.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="85">
-              <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
+            <state relative-caret-position="306">
+              <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -137,8 +113,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/Media.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="136">
-              <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
+            <state relative-caret-position="102">
+              <caret line="6" selection-start-line="6" selection-end-line="6" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/canto/SongInfo.kt">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="119">
+              <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
             </state>
           </provider>
         </entry>
@@ -146,8 +131,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/wiki/DescriptionScrapper.kt">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+            <state relative-caret-position="155">
+              <caret line="32" column="62" lean-forward="true" selection-start-line="32" selection-start-column="62" selection-end-line="32" selection-end-column="62" />
               <folding>
                 <element signature="e#49#316#0" expanded="true" />
               </folding>
@@ -173,6 +158,7 @@
       <find>stepa</find>
       <find>it</find>
       <find>mapper</find>
+      <find>\&quot;</find>
     </findStrings>
     <replaceStrings>
       <replace />
@@ -198,21 +184,23 @@
         <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/atlas/Extractor.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/atlas/PageImageExtractor.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/NameUtils.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/BirdInfo.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/atlas/PDFInfoExtractor.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/CsvPrinter.kt" />
         <option value="$PROJECT_DIR$/.gitignore" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/Main.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/canto/SongDownloader.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/atlas/PaintExtractor.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/wiki/DescriptionScrapper.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/Attribution.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/Language.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/Organism.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/OrganismMedia.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/Media.kt" />
-        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/Extractor.kt" />
         <option value="$PROJECT_DIR$/build.gradle" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/atlas/PaintExtractor.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/canto/SongInfo.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/canto/SongDownloader.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/Extractor.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/canto/SongOptimizer.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/Main.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/Media.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/BirdInfo.kt" />
+        <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/wiki/DescriptionScrapper.kt" />
         <option value="$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/CsvPrinter.kt" />
       </list>
     </option>
@@ -231,12 +219,31 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
             <path>
               <item name="ro.adriantosca.cipcirip.datagather" type="b2602c69:ProjectViewProjectNode" />
               <item name="datagather" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ro.adriantosca.cipcirip.datagather" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datagather" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ro.adriantosca.cipcirip.datagather" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datagather" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="gen" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="ro.adriantosca.cipcirip.datagather" type="b2602c69:ProjectViewProjectNode" />
+              <item name="datagather" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+              <item name="gen" type="462c0819:PsiDirectoryNode" />
+              <item name="out" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="ro.adriantosca.cipcirip.datagather" type="b2602c69:ProjectViewProjectNode" />
@@ -280,31 +287,12 @@
               <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
               <item name="kotlin" type="462c0819:PsiDirectoryNode" />
               <item name="datagather" type="462c0819:PsiDirectoryNode" />
-              <item name="canto" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ro.adriantosca.cipcirip.datagather" type="b2602c69:ProjectViewProjectNode" />
-              <item name="datagather" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="kotlin" type="462c0819:PsiDirectoryNode" />
-              <item name="datagather" type="462c0819:PsiDirectoryNode" />
-              <item name="csv" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="ro.adriantosca.cipcirip.datagather" type="b2602c69:ProjectViewProjectNode" />
-              <item name="datagather" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="main" type="8a07ba80:GradleTreeStructureProvider$GradleModuleDirectoryNode" />
-              <item name="kotlin" type="462c0819:PsiDirectoryNode" />
-              <item name="datagather" type="462c0819:PsiDirectoryNode" />
               <item name="wiki" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
       <pane id="PackagesPane" />
     </panes>
   </component>
@@ -411,6 +399,8 @@
       <workItem from="1561223544074" duration="327000" />
       <workItem from="1571246934106" duration="1630000" />
       <workItem from="1571674805760" duration="8100000" />
+      <workItem from="1581752572286" duration="447000" />
+      <workItem from="1582314899644" duration="6756000" />
     </task>
     <task id="LOCAL-00001" summary="more gather cache and added description from wikipedia">
       <created>1559328117262</created>
@@ -423,18 +413,19 @@
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="67535000" />
+    <option name="totallyTimeSpent" value="74738000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="0" y="0" width="1680" height="1050" extended-state="0" />
+    <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.2832723" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.2899878" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Designer" order="2" />
       <window_info id="Favorites" order="3" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" weight="0.32959184" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.30816326" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.40816328" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -588,28 +579,11 @@
     </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jsoup/jsoup/1.11.3/871302b15d8cee9bfb393c4f1d0386b17646d8d1/jsoup-1.11.3-sources.jar!/org/jsoup/select/Elements.java" />
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jsoup/jsoup/1.11.3/871302b15d8cee9bfb393c4f1d0386b17646d8d1/jsoup-1.11.3-sources.jar!/org/jsoup/nodes/Element.java" />
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/canto/SongInfo.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34">
-          <caret line="2" column="19" selection-start-line="2" selection-start-column="19" selection-end-line="2" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib-common/1.3.21/224a3bcfa1c088dd5d7c4a3958a68427b44c65dc/kotlin-stdlib-common-1.3.21-sources.jar!/kotlin/text/Indent.kt" />
     <entry file="file://$PROJECT_DIR$/.gitignore">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="102">
           <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/atlas/PageImageExtractor.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="253">
-          <caret line="75" column="9" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="9" />
-          <folding>
-            <element signature="e#50#846#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -627,13 +601,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/BirdInfo.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="340">
-          <caret line="20" selection-start-line="20" selection-end-line="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/atlas/PDFInfoExtractor.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="216">
@@ -644,36 +611,37 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/Main.kt">
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.3.50/bc0c767786c4a3c042a364e69d3f3dd5ff5253a5/kotlin-stdlib-1.3.50-sources.jar!/kotlin/collections/TypeAliases.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" column="24" selection-start-line="3" selection-start-column="24" selection-end-line="3" selection-end-column="24" />
+        <state relative-caret-position="153">
+          <caret line="12" column="44" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/canto/SongDownloader.kt">
+    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-csv/1.6/7163d5c8c70c71d32507583a3f6297302b32fa71/commons-csv-1.6-sources.jar!/org/apache/commons/csv/CSVPrinter.java" />
+    <entry file="file://$PROJECT_DIR$/build.gradle">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="221">
-          <caret line="21" column="72" selection-start-line="21" selection-start-column="72" selection-end-line="21" selection-end-column="72" />
+        <state relative-caret-position="459">
+          <caret line="27" selection-start-line="27" selection-end-line="27" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/atlas/PaintExtractor.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="25" column="70" selection-start-line="25" selection-start-column="70" selection-end-line="25" selection-end-column="70" />
+        <state relative-caret-position="986">
+          <caret line="66" column="13" selection-start-line="66" selection-start-column="13" selection-end-line="66" selection-end-column="13" />
           <folding>
             <element signature="e#50#358#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/wiki/DescriptionScrapper.kt">
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/atlas/PageImageExtractor.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="15" column="30" selection-start-line="15" selection-start-column="30" selection-end-line="15" selection-end-column="30" />
+        <state relative-caret-position="1003">
+          <caret line="75" column="9" selection-start-line="75" selection-start-column="9" selection-end-line="75" selection-end-column="9" />
           <folding>
-            <element signature="e#49#316#0" expanded="true" />
+            <element signature="e#50#846#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -692,20 +660,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/OrganismMedia.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="85">
-          <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/Media.kt">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="136">
-          <caret line="8" column="27" selection-start-line="8" selection-start-column="27" selection-end-line="8" selection-end-column="27" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/Organism.kt">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="34">
@@ -713,38 +667,106 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.jetbrains.kotlin/kotlin-stdlib/1.3.50/bc0c767786c4a3c042a364e69d3f3dd5ff5253a5/kotlin-stdlib-1.3.50-sources.jar!/kotlin/collections/TypeAliases.kt">
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/OrganismMedia.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="153">
-          <caret line="12" column="44" selection-start-line="12" selection-start-column="44" selection-end-line="12" selection-end-column="44" />
+        <state relative-caret-position="85">
+          <caret line="5" column="1" selection-start-line="5" selection-start-column="1" selection-end-line="5" selection-end-column="1" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/build.gradle">
+    <entry file="file://$PROJECT_DIR$/data/gen/songs/actitis_hypoleucos.txt">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/canto/SongDownloader.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="459">
-          <caret line="27" selection-start-line="27" selection-end-line="27" />
+        <state relative-caret-position="204">
+          <caret line="16" column="36" selection-start-line="16" selection-start-column="36" selection-end-line="16" selection-end-column="36" />
         </state>
       </provider>
     </entry>
-    <entry file="jar://$USER_HOME$/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-csv/1.6/7163d5c8c70c71d32507583a3f6297302b32fa71/commons-csv-1.6-sources.jar!/org/apache/commons/csv/CSVPrinter.java">
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/canto/SongInfo.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-379">
-          <caret line="268" column="16" selection-start-line="268" selection-start-column="16" selection-end-line="268" selection-end-column="16" />
+        <state relative-caret-position="119">
+          <caret line="7" column="1" selection-start-line="7" selection-start-column="1" selection-end-line="7" selection-end-column="1" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/Extractor.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="444">
-          <caret line="39" column="28" selection-start-line="39" selection-start-column="28" selection-end-line="39" selection-end-column="28" />
+        <state relative-caret-position="363">
+          <caret line="46" column="30" selection-start-line="46" selection-start-column="30" selection-end-line="46" selection-end-column="30" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/Main.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="51">
+          <caret line="3" column="20" lean-forward="true" selection-start-line="3" selection-start-column="20" selection-end-line="3" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/gen/organisms.csv">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/canto/SongOptimizer.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="194">
+          <caret line="18" column="33" lean-forward="true" selection-start-line="18" selection-start-column="33" selection-end-line="18" selection-end-column="33" />
+          <folding>
+            <element signature="e#50#159#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/gen/out/Organism.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="32" lean-forward="true" selection-start-line="22" selection-start-column="32" selection-end-line="22" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/gen/out/Attribution.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" column="58" lean-forward="true" selection-start-line="6" selection-start-column="58" selection-end-line="6" selection-end-column="58" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/Media.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="102">
+          <caret line="6" selection-start-line="6" selection-end-line="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/data/gen/out/Media.csv">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="34">
+          <caret line="2" column="20" lean-forward="true" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/BirdInfo.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="306">
+          <caret line="18" column="42" selection-start-line="18" selection-start-column="42" selection-end-line="18" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/wiki/DescriptionScrapper.kt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="155">
+          <caret line="32" column="62" lean-forward="true" selection-start-line="32" selection-start-column="62" selection-end-line="32" selection-end-column="62" />
+          <folding>
+            <element signature="e#49#316#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/main/kotlin/ro/adriantosca/cipcirip/datagather/csv/CsvPrinter.kt">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="262">
-          <caret line="110" column="46" selection-start-line="110" selection-start-column="46" selection-end-line="110" selection-end-column="46" />
+        <state relative-caret-position="249">
+          <caret line="48" column="113" selection-start-line="48" selection-start-column="113" selection-end-line="48" selection-end-column="113" />
           <folding>
             <element signature="e#48#402#0" expanded="true" />
           </folding>

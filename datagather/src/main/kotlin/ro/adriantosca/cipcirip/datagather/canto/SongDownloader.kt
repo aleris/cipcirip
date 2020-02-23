@@ -27,19 +27,22 @@ class SongDownloader {
                         println("NOT found: ${birdInfo.nameLat}")
                     } else {
                         val infoText = """
-${songInfo.link}
+${songInfo.id}
 ${songInfo.recordist}
+${songInfo.downloadLink}
+${songInfo.length}
                     """.trimIndent()
                         infoFile.writeText(infoText)
-                        birdInfo.soundLink = songInfo.link
-                        birdInfo.soundAttribution = songInfo.recordist
-                        saveSoundFileIfNotExists(soundFile, songInfo.link, birdInfo)
+                        birdInfo.soundDownloadLink = songInfo.downloadLink
+                        birdInfo.soundRecordist = songInfo.recordist
+                        saveSoundFileIfNotExists(soundFile, songInfo.downloadLink, birdInfo)
                     }
                 }
             } else {
                 val infoTextLines = infoFile.readText().lines()
-                birdInfo.soundLink = infoTextLines[0]
-                birdInfo.soundAttribution = infoTextLines[1]
+                birdInfo.soundId = infoTextLines[0]
+                birdInfo.soundRecordist = infoTextLines[1]
+                birdInfo.soundDownloadLink = infoTextLines[2]
                 println("Exists: $infoFile, skipping.")
             }
         }
@@ -109,7 +112,7 @@ ${songInfo.recordist}
         songList: ArrayList<SongInfo>
     ) {
         for (page in pages) {
-            val listPage = extractList(birdInfo.code, queryName, 1)
+            val listPage = extractList(birdInfo.code, queryName, page)
             songList.addAll(listPage)
         }
     }
@@ -128,8 +131,9 @@ ${songInfo.recordist}
                 val length = cols[2].text()
                 val recordist = cols[3].text()
                 val linkPath = row.selectFirst("td div div").attr("data-xc-filepath")
-                val link = "http:$linkPath"
-                songList.add(SongInfo(birdCode, length, recordist, link))
+                val downloadLink = "http:$linkPath"
+                val id = cols.last().select("a").attr("href").substring(1)
+                songList.add(SongInfo(birdCode, length, recordist, downloadLink, id))
             }
         }
 

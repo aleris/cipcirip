@@ -4,12 +4,14 @@ import org.apache.pdfbox.pdmodel.PDDocument
 import ro.adriantosca.cipcirip.datagather.atlas.PDFInfoExtractor
 import ro.adriantosca.cipcirip.datagather.atlas.PaintExtractor
 import ro.adriantosca.cipcirip.datagather.canto.SongDownloader
+import ro.adriantosca.cipcirip.datagather.canto.SongOptimizer
 import ro.adriantosca.cipcirip.datagather.csv.CsvPrinter
 import ro.adriantosca.cipcirip.datagather.wiki.DescriptionScrapper
 import java.io.File
 
 class Extractor {
     private val dataDirectoryPath = "/Users/at/Projects/CipCirip/datagather/data"
+    private val genDirectoryPath = "$dataDirectoryPath/gen"
 
     fun extract(skipNotExisting: Boolean) {
         val file = File("$dataDirectoryPath/Atlasul-Pasarilor-2015.pdf")
@@ -21,8 +23,6 @@ class Extractor {
 //            mapInfo.values.forEach { println(it) }
 
             val birdInfoList = birdInfoMap.values.toList()
-
-            val genDirectoryPath = "$dataDirectoryPath/gen"
 
             println("Getting descriptions:")
             DescriptionScrapper().fillInto(birdInfoList, "$genDirectoryPath/descriptions", skipNotExisting)
@@ -40,5 +40,11 @@ class Extractor {
             CsvPrinter().print(birdInfoList, "$genDirectoryPath/out")
             println(" OK")
         }
+    }
+
+    fun optimizeSongs() {
+        println("Optimizing songs:")
+        SongOptimizer().optimize("$genDirectoryPath/songs", "$genDirectoryPath/songs-optimized")
+        println("OK")
     }
 }

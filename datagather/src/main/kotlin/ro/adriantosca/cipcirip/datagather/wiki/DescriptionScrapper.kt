@@ -24,8 +24,12 @@ class DescriptionScrapper {
                     println("Does not exists: ${birdInfo.code}.txt, but skipping.")
                 } else {
                     fileRom.parentFile.mkdirs()
-                    birdInfo.descriptionRom = scrapDescription(birdInfo, "ro")
-                    birdInfo.descriptionEng = scrapDescription(birdInfo, "en")
+                    val scrappedRO = scrapDescription(birdInfo, "ro")
+                    birdInfo.descriptionRom = scrappedRO.first
+                    birdInfo.descriptionRomLink = scrappedRO.second
+                    val scrappedEN = scrapDescription(birdInfo, "en")
+                    birdInfo.descriptionEng = scrappedEN.first
+                    birdInfo.descriptionEngLink = scrappedEN.second
                     fileRom.writeText(birdInfo.descriptionRom)
                     fileEng.writeText(birdInfo.descriptionEng)
                     println("${birdInfo.code}.txt OK.")
@@ -38,15 +42,17 @@ class DescriptionScrapper {
         }
     }
 
-    private fun scrapDescription(birdInfo: BirdInfo, language: String): String {
+    private fun scrapDescription(birdInfo: BirdInfo, language: String): Pair<String, String> {
         val result = scrapInfo(birdInfo, language)
         val pageid = result["pageid"]
-        val doc = Jsoup.connect("https://$language.wikipedia.org/?curid=$pageid").get()
+        val link = "https://$language.wikipedia.org/?curid=$pageid"
+        val doc = Jsoup.connect(link).get()
         val text = extractDescription(doc)
         println("${birdInfo.code}($language):")
+        println(link)
         println(text)
         println()
-        return text
+        return Pair(text, link)
     }
 
     private fun scrapInfo(

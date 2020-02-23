@@ -4,7 +4,6 @@ data class Media(
     var id: Long = 0,
     var type: MediaType,
     var property: MediaProperty,
-    var isLocal: Boolean,
     var externalLink: String?,
     var attributionId: Long
 )
