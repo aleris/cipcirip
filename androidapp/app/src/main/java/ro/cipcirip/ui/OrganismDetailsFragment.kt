@@ -111,6 +111,6 @@ class OrganismDetailsFragment : Fragment() {
     }
 
     private fun getAttributionText(it: MediaWithAttribution?): String {
-        return it?.let { "${it.description} (${it.source})" }.orEmpty()
+        return it?.let { "• ${it.description} (${it.source})" }.orEmpty()
     }
 }

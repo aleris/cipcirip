@@ -30,13 +30,25 @@ class DescriptionScrapper {
                     val scrappedEN = scrapDescription(birdInfo, "en")
                     birdInfo.descriptionEng = scrappedEN.first
                     birdInfo.descriptionEngLink = scrappedEN.second
+                    fileRom.writeText(birdInfo.descriptionRomLink)
                     fileRom.writeText(birdInfo.descriptionRom)
+                    fileEng.writeText(birdInfo.descriptionEngLink)
                     fileEng.writeText(birdInfo.descriptionEng)
                     println("${birdInfo.code}.txt OK.")
                 }
             } else {
-                birdInfo.descriptionRom = fileRom.readText()
-                birdInfo.descriptionEng = fileEng.readText()
+                fileRom.useLines {
+                    birdInfo.descriptionRomLink = it.first()
+                }
+                fileRom.useLines {
+                    birdInfo.descriptionRom = it.drop(1).joinToString("\n")
+                }
+                fileEng.useLines {
+                    birdInfo.descriptionEngLink = it.first()
+                }
+                fileEng.useLines {
+                    birdInfo.descriptionEng = it.drop(1).joinToString("\n")
+                }
                 println("Exists: ${birdInfo.code}.txt, skipping.")
             }
         }
@@ -78,6 +90,15 @@ class DescriptionScrapper {
             .filter { !it.text().endsWith(":") }
             .joinToString("\n") { it.text() }
             .replace(Regex("\\[\\d+]"), "")
-        return text
+        return correctCedilaDiacritics(text)
     }
+
+    private fun correctCedilaDiacritics(s: String): String {
+        return s
+            .replace('ş', 'ș')
+            .replace('Ş', 'Ș')
+            .replace('ţ', 'ț')
+            .replace('Ţ', 'Ț')
+    }
+
 }

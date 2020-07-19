@@ -28,6 +28,7 @@ class CsvPrinter {
         val attributions = ArrayList<Attribution>()
         val medias = ArrayList<Media>()
         val organisms = ArrayList<Organism>()
+        val informations = ArrayList<Information>()
         val organimsMedias = ArrayList<OrganismMedia>()
 
         birdInfoList.forEach { birdInfo ->
@@ -46,15 +47,13 @@ class CsvPrinter {
             val wikiAttribution = Attribution(nextId(attributions), wikipediaAttributionDescription, wikipediaAttributionSource)
             attributions.add(wikiAttribution)
 
-            val wikiMedia = Media(nextId(medias), MediaType.Text, MediaProperty.None, birdInfo.descriptionEngLink, wikiAttribution.id)
+            val wikiMedia = Media(nextId(medias), MediaType.Information, MediaProperty.None, birdInfo.descriptionEngLink, wikiAttribution.id)
             medias.add(wikiMedia)
 
             val organism = Organism(
                 nextId(organisms),
                 birdInfo.code,
                 birdInfo.nameLat,
-                birdInfo.nameRom,
-                birdInfo.nameEng,
                 birdInfo.regnum,
                 birdInfo.phylum,
                 birdInfo.classis,
@@ -62,10 +61,14 @@ class CsvPrinter {
                 birdInfo.familia,
                 birdInfo.genus,
                 birdInfo.species,
-                birdInfo.descriptionRom,
-                birdInfo.descriptionEng,
                 0)
             organisms.add(organism)
+
+            val informationRom = Information(nextId(informations), organism.id, Language.Rom, birdInfo.nameRom, birdInfo.descriptionRom, birdInfo.descriptionRomLink)
+            informations.add(informationRom)
+
+            val informationEng = Information(nextId(informations), organism.id, Language.Eng, birdInfo.nameEng, birdInfo.descriptionEng, birdInfo.descriptionEngLink)
+            informations.add(informationEng)
 
             organimsMedias.add(OrganismMedia(organism.id, soundMedia.id))
             organimsMedias.add(OrganismMedia(organism.id, paintMedia.id))
@@ -75,18 +78,19 @@ class CsvPrinter {
         printCsv(attributions, pathToDirectory)
         printCsv(medias, pathToDirectory)
         printCsv(organisms, pathToDirectory)
+        printCsv(informations, pathToDirectory)
         printCsv(organimsMedias, pathToDirectory)
     }
 
-    private fun <E> nextId(list: List<E>) = list.size.toLong() + 1
+    private fun <E> nextId(list: List<E>) = list.size.toLong().toInt() + 1
 
-    fun printCsv(list: List<Any>, pathToDirectory: String) {
+    private fun printCsv(list: List<Any>, pathToDirectory: String) {
 
         if (list.isEmpty()) {
             return
         }
 
-        val header = getHeaderColumnsFromDataClass(list[0]::class) ?: return
+        val header = getHeaderColumnsFromDataClass(list[0]::class)
 
         val name = list[0].javaClass.simpleName
         val pathToFile = "$pathToDirectory/$name.csv"
@@ -125,64 +129,4 @@ class CsvPrinter {
             .first { it.name == propertyName } as KProperty1<Any, *>
         return property.get(instance)?.toString() ?: ""
     }
-
-//    fun printCsv(birdInfoList: List<BirdInfo>, path: String) {
-//        File(path).writer().use { writer ->
-//            val printer = CSVPrinter(
-//                writer, CSVFormat.DEFAULT.withHeader(
-//                    "code",
-//                    "nameLat",
-//                    "regnum",
-//                    "phylum",
-//                    "classis",
-//                    "ordo",
-//                    "familia",
-//                    "genus",
-//                    "species",
-//                    "nameRom",
-//                    "nameEng",
-//                    "descriptionRom",
-//                    "descriptionEng",
-//                    "hasSound",
-//                    "soundLink",
-//                    "soundAttribution",
-//                    "hasImagePaint",
-//                    "imagePaintAttribution",
-//                    "hasImageMale",
-//                    "imageMaleAttribution",
-//                    "hasImageFemale",
-//                    "imageFemaleAttribution"
-//                )
-//            )
-//            birdInfoList.forEach {
-//                printer.printRecord(
-//                    it.code,
-//                    it.nameLat,
-//                    it.regnum,
-//                    it.phylum,
-//                    it.classis,
-//                    it.ordo,
-//                    it.familia,
-//                    it.genus,
-//                    it.species,
-//                    it.nameRom,
-//                    it.nameEng,
-//                    it.descriptionRom,
-//                    it.descriptionEng,
-//                    if (it.soundAttribution.isEmpty()) 0 else 1,
-//                    it.soundLink,
-//                    it.soundAttribution,
-//                    1,
-//                    "Ministerul Mediului, Apelor și Pădurilor – direcția Biodiversitate,\n" +
-//                            "Programul Operațional Sectorial – Mediu,\n" +
-//                            "Proiect: 36586 SMIS-CSNR „Sistemul naţional de gestiune şi monitorizare a speciilor de păsări din România în baza articolului 12 din Directiva Păsări”\n" +
-//                            "Proiect co-finanţat din Fondul European de Dezvoltare Regională prin Programul Operațional Sectorial Mediu.",
-//                    0,
-//                    "",
-//                    0,
-//                    ""
-//                )
-//            }
-//        }
-//    }
 }

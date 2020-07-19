@@ -1,18 +1,18 @@
 package ro.adriantosca.cipcirip.datagather.csv
 
 data class Media(
-    var id: Long = 0,
+    var id: Int = 0,
     var type: MediaType,
     var property: MediaProperty,
     var externalLink: String?,
-    var attributionId: Long
+    var attributionId: Int
 )
 
 enum class MediaType {
     Sound,
     Paint,
     Photo,
-    Text
+    Information
 }
 
 enum class MediaProperty {

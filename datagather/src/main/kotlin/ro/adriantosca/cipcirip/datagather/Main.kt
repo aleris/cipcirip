@@ -1,6 +1,6 @@
 package ro.adriantosca.cipcirip.datagather
 
 fun main() {
-    Extractor().extract(true)
+    Extractor().extract(false)
 //    Extractor().optimizeSongs()
 }
