@@ -30,10 +30,8 @@ class DescriptionScrapper {
                     val scrappedEN = scrapDescription(birdInfo, "en")
                     birdInfo.descriptionEng = scrappedEN.first
                     birdInfo.descriptionEngLink = scrappedEN.second
-                    fileRom.writeText(birdInfo.descriptionRomLink)
-                    fileRom.writeText(birdInfo.descriptionRom)
-                    fileEng.writeText(birdInfo.descriptionEngLink)
-                    fileEng.writeText(birdInfo.descriptionEng)
+                    fileRom.writeText("${birdInfo.descriptionRomLink}\n${birdInfo.descriptionRom}")
+                    fileEng.writeText("${birdInfo.descriptionEngLink}\n${birdInfo.descriptionEng}")
                     println("${birdInfo.code}.txt OK.")
                 }
             } else {
@@ -71,7 +69,9 @@ class DescriptionScrapper {
         birdInfo: BirdInfo,
         language: String
     ): Map<*, *> {
-        val queryNameLat = NameUtils.firstNameLat(birdInfo).replace(" ", "+")
+        val queryNameLat = NameUtils.firstNameLat(birdInfo)
+            .replace(" ", "+")
+            .replace(" ", "+")
         val link =
             "https://$language.wikipedia.org/w/api.php?action=query&list=search&srsearch=$queryNameLat&utf8=&format=json"
         val url = URL(link)
@@ -86,7 +86,7 @@ class DescriptionScrapper {
         val nodes = contentText.select("div>p")
         val text = nodes
             .filter { it.text().isNotBlank() }
-            .take(3)
+            .take(20)
             .filter { !it.text().endsWith(":") }
             .joinToString("\n") { it.text() }
             .replace(Regex("\\[\\d+]"), "")

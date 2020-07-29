@@ -6,5 +6,6 @@ data class Information(
     var language: Language,
     var name: String,
     var description: String,
-    var externalLink: String
+    var externalLink: String,
+    var attributionId: Int
 )

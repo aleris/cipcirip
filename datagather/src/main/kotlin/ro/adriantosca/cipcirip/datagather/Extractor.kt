@@ -10,7 +10,7 @@ import ro.adriantosca.cipcirip.datagather.wiki.DescriptionScrapper
 import java.io.File
 
 class Extractor {
-    private val dataDirectoryPath = "/Users/at/Projects/CipCirip/datagather/data"
+    private val dataDirectoryPath = "/Users/adrian.tosca/Adi/cipcirip/datagather/data"
     private val genDirectoryPath = "$dataDirectoryPath/gen"
 
     fun extract(skipNotExisting: Boolean) {
