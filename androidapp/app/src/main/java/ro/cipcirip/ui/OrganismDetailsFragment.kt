@@ -61,44 +61,16 @@ class OrganismDetailsFragment : Fragment() {
 
     private fun loadIntoView(view: View) {
         viewModel.getOrganism().observe(viewLifecycleOwner, Observer { organism ->
-            view.findViewById<TextView>(R.id.name_lat).text = organism.nameLat
-            val image = view.findViewById<ImageView>(R.id.image)
-            Glide
-                .with(image.context)
-                .load(
-                    Uri.parse("file:///android_asset/media/paintings/${organism.code}.jpg")
-                )
-                .placeholder(
-                    ColorDrawable(
-                        ContextCompat.getColor(image.context, R.color.colorPlaceholder)
-                    )
-                )
-                .into(image)
+            organism?.let {
+                loadOrganismIntoView(view, it)
+            }
 
-            showAsPlaying(view, organism.id == singleSongPlayer.currentPlayingOrganism?.id)
-            view.findViewById<ImageButton>(R.id.play).setOnClickListener {
-                singleSongPlayer.play(OrganismPlayDescriptor(organism), {
-                    showAsPlaying(view, true)
-                }, {
-                    showAsPlaying(view, false)
-                })
-            }
-            view.findViewById<ImageButton>(R.id.stop).setOnClickListener {
-                singleSongPlayer.stop()
-                showAsPlaying(view, false)
-            }
         })
 
         viewModel.getInformationWithAttribution()
             .observe(viewLifecycleOwner, Observer { informationWithAttribution ->
-                informationWithAttribution.let {
-                    (activity as AppCompatActivity?)?.supportActionBar?.title =
-                        informationWithAttribution.name
-                    view.findViewById<TextView>(R.id.name).text = informationWithAttribution.name
-                    view.findViewById<TextView>(R.id.description).text =
-                        processTextParagraphs(informationWithAttribution.description)
-                    view.findViewById<TextView>(R.id.description_attribution).text =
-                        getAttributionText(informationWithAttribution)
+                informationWithAttribution?.let {
+                    loadInformationIntoView(it, view)
                 }
             })
 
@@ -115,6 +87,48 @@ class OrganismDetailsFragment : Fragment() {
         })
     }
 
+    private fun loadInformationIntoView(
+        it: InformationWithAttribution,
+        view: View
+    ) {
+        (activity as AppCompatActivity?)?.supportActionBar?.title =
+            it.name
+        view.findViewById<TextView>(R.id.name).text = it.name
+        view.findViewById<TextView>(R.id.description).text =
+            processTextParagraphs(it.description)
+        view.findViewById<TextView>(R.id.description_attribution).text =
+            getAttributionText(it)
+    }
+
+    private fun loadOrganismIntoView(view: View, organism: Organism) {
+        view.findViewById<TextView>(R.id.name_lat).text = organism.nameLat
+        val image = view.findViewById<ImageView>(R.id.image)
+        Glide
+            .with(image.context)
+            .load(
+                Uri.parse("file:///android_asset/media/paintings/${organism.code}.jpg")
+            )
+            .placeholder(
+                ColorDrawable(
+                    ContextCompat.getColor(image.context, R.color.colorPlaceholder)
+                )
+            )
+            .into(image)
+
+        showAsPlaying(view, organism.id == singleSongPlayer.currentPlayingOrganism?.id)
+        view.findViewById<ImageButton>(R.id.play).setOnClickListener {
+            singleSongPlayer.play(OrganismPlayDescriptor(organism), {
+                showAsPlaying(view, true)
+            }, {
+                showAsPlaying(view, false)
+            })
+        }
+        view.findViewById<ImageButton>(R.id.stop).setOnClickListener {
+            singleSongPlayer.stop()
+            showAsPlaying(view, false)
+        }
+    }
+
     private fun processTextParagraphs(text: String): SpannableString {
         val formattedText = text.replace("\n", "\n\n")
         val spannableString = SpannableString(formattedText)
@@ -122,7 +136,7 @@ class OrganismDetailsFragment : Fragment() {
         val matcher = Pattern.compile("\n\n").matcher(formattedText)
         while (matcher.find()) {
             spannableString.setSpan(
-                AbsoluteSizeSpan(10, true),
+                AbsoluteSizeSpan(8, true),
                 matcher.start() + 1,
                 matcher.end(),
                 Spannable.SPAN_EXCLUSIVE_EXCLUSIVE

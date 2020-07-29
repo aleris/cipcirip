@@ -26,7 +26,7 @@ abstract class OrganismDao {
     abstract fun listMediaOfType(organismId: Long, mediaType: String): LiveData<List<Media>>
 
     @Query("""select Organism.* from Organism where Organism.id = :id""")
-    abstract fun get(id: Long): LiveData<Organism>
+    abstract fun get(id: Long): LiveData<Organism?>
 
 //    @Query("select Organism.* from Organism inner join OrganismPlace on Organism.id = OrganismPlace.organismId where OrganismPlace.placeId = :placeId order by :order")
 //    abstract fun listForPlace(placeId: Long, order: String = Organism.Contract.name(Language.Default)): LiveData<List<Organism>>

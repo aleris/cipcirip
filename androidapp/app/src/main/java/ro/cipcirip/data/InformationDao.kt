@@ -28,5 +28,5 @@ abstract class InformationDao {
             inner join Attribution on Information.attributionId = Attribution.id
         where Information.language = :language and OrganismInformation.organismId = :organismId
         """)
-    abstract fun getWithAttribution(organismId: Long, language: Language): LiveData<InformationWithAttribution>
+    abstract fun getWithAttribution(organismId: Long, language: Language): LiveData<InformationWithAttribution?>
 }
