@@ -54,6 +54,9 @@ class OrganismDetailsFragment : Fragment() {
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         viewModel.setOrganismId(args.organismId)
         loadIntoView(view)
+
+        val supportActionBar = (activity as AppCompatActivity?)?.supportActionBar ?: return
+        supportActionBar.hide()
     }
 
     private fun loadIntoView(view: View) {

@@ -81,7 +81,9 @@ class OrganismListFragment : Fragment(), KoinComponent {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        (activity as AppCompatActivity?)?.supportActionBar?.title = resources.getString(R.string.app_name)
+        val supportActionBar = (activity as AppCompatActivity?)?.supportActionBar ?: return
+        supportActionBar.show()
+        supportActionBar.title = resources.getString(R.string.app_name)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
