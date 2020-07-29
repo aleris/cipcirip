@@ -9,13 +9,14 @@ import ro.cipcirip.data.OrganismRepository
 val appModule = module {
     single { DataImporter(androidApplication()) }
     single {
-//        AppDatabase.deleteDatabase(androidApplication())
+        AppDatabase.deleteDatabase(androidApplication())
         AppDatabase.buildDatabase(androidApplication(), get())
     }
     single { get<AppDatabase>().attributionDao() }
     single { get<AppDatabase>().mediaDao() }
     single { get<AppDatabase>().organismDao() }
     single { get<AppDatabase>().organismMediaDao() }
+    single { get<AppDatabase>().informationDao() }
     single { OrganismRepository() }
     single { SingleSongPlayer(androidApplication())}
 }

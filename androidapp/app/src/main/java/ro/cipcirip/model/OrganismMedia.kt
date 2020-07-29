@@ -20,8 +20,8 @@ import androidx.room.Index
         )
     ])
 data class OrganismMedia(
-    var organismId: Int,
-    var mediaId: Int
+    var organismId: Long,
+    var mediaId: Long
 ) {
     object Contract {
         const val organismId = "organismId"

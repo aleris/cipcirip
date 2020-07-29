@@ -35,7 +35,7 @@
                     android:background="@null"
                     app:layout_constraintBottom_toBottomOf="@+id/image"
                     app:layout_constraintEnd_toEndOf="parent"
-                    app:srcCompat="@drawable/ic_play_arrow_green_48dp" />
+                    app:srcCompat="@drawable/ic_play_green_48dp" />
 
             <ImageButton
                     android:id="@+id/stop"

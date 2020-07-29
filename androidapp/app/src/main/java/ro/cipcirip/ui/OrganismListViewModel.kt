@@ -6,17 +6,18 @@ import androidx.lifecycle.ViewModel
 import org.koin.core.KoinComponent
 import org.koin.core.inject
 import ro.cipcirip.data.OrganismRepository
+import ro.cipcirip.model.Language
 
 class OrganismListViewModel: ViewModel(), KoinComponent {
     private val organismRepository by inject<OrganismRepository>()
 
     private val searchTextLiveData = MutableLiveData<String>("")
 
-    fun getFilteredOrganisms() = Transformations.switchMap(searchTextLiveData) {
+    fun getFilteredOrganisms(language: Language) = Transformations.switchMap(searchTextLiveData) {
         if (it.isNullOrBlank()) {
-            organismRepository.allOrganisms()
+            organismRepository.allOrganisms(language)
         } else {
-            organismRepository.find("$it*")
+            organismRepository.find("$it*", language)
         }
     }
 

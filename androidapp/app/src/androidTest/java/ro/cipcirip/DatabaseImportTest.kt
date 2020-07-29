@@ -15,6 +15,7 @@ import org.koin.core.context.stopKoin
 import org.koin.test.AutoCloseKoinTest
 import org.koin.test.inject
 import ro.cipcirip.data.AppDatabase
+import ro.cipcirip.model.Language
 
 /**
  * Instrumented test, which will execute on an Android device.
@@ -27,28 +28,28 @@ class DatabaseImportTest: AutoCloseKoinTest() {
 
     @Before
     fun before() {
-        startKoin {
-            androidLogger()
-            val androidContext = ApplicationProvider.getApplicationContext<Context>()
-            androidContext(androidContext)
-//            AppDatabase.deleteDatabaseFile(androidContext, DATABASE_NAME)
-            modules(appModule)
-        }
-        db.organismDao().all()
-        Thread.sleep(3000)
+//        startKoin {
+//            androidLogger()
+//            val androidContext = ApplicationProvider.getApplicationContext<Context>()
+//            androidContext(androidContext)
+////            AppDatabase.deleteDatabase(androidContext)
+//            modules(appModule)
+//        }
+//        db.organismDao().all(Language.Rom)
+//        Thread.sleep(3000)
     }
 
     @Test
     fun dataWasImported() {
-        assertTrue(db.organismDao().all().value?.isNotEmpty() ?: false)
+        assertTrue(db.organismDao().all(Language.Rom).value?.isNotEmpty() ?: false)
     }
 
     @Test
     fun findWildcard() {
         println("aaaaaa>>>>>>>>")
-        println(db.organismDao().find("v*", "code").value)
-        println(db.organismDao().all().value)
-        assertTrue(db.organismDao().find("vrabia", "code").value.isNullOrEmpty())
+        println(db.organismDao().find("v*", Language.Rom).value)
+        println(db.organismDao().all(Language.Rom).value)
+        assertTrue(db.organismDao().find("vrabia", Language.Rom).value.isNullOrEmpty())
     }
 
     @After

@@ -52,6 +52,42 @@ class DataImporter(private val context: Context) : KoinComponent {
                     }
                 }
 
+            logger.info { "Importing Information..." }
+            context.assets.open("data/$index/Information.csv")
+                .bufferedReader()
+                .use { reader ->
+                    val informationList = CSVParser(reader, CSVFormat.DEFAULT).records
+                        .drop(1)
+                        .map { record -> recordToInformation(record) }
+
+                    informationList.forEach { information ->
+                        if (db.informationDao().exists(information.id)) {
+                            db.informationDao().update(information)
+                        } else {
+                            db.informationDao().insert(information)
+                        }
+                    }
+                }
+
+            logger.info { "Importing OrganismInformation..." }
+            context.assets.open("data/$index/OrganismInformation.csv")
+                .bufferedReader()
+                .use { reader ->
+                    val organismInformationList = CSVParser(reader, CSVFormat.DEFAULT).records
+                        .drop(1)
+                        .map { record -> recordToOrganismInformation(record) }
+
+                    organismInformationList.forEach { organismInformation ->
+                        if (!db.organismInformationDao().exists(
+                                organismInformation.organismId,
+                                organismInformation.informationId
+                            )
+                        ) {
+                            db.organismInformationDao().insert(organismInformation)
+                        }
+                    }
+                }
+
             logger.info { "Importing Media..." }
             context.assets.open("data/$index/Media.csv")
                 .bufferedReader()
@@ -90,29 +126,29 @@ class DataImporter(private val context: Context) : KoinComponent {
 
             logger.info { "Import done." }
         } catch (ex: Exception) {
-            logger.error { "Error on import databse $ex" }
+            logger.error { "Error on import database $ex" }
             FirebaseCrashlytics.getInstance().recordException(ex)
         }
 
     }
 
     private fun recordToAttribution(record: CSVRecord) = Attribution(
-        record[0].toInt(),
+        record[0].toLong(),
         record[1],
         record[2]
     )
 
     private fun recordToMedia(record: CSVRecord) = Media(
-        record[0].toInt(),
+        record[0].toLong(),
         MediaType.valueOf(record[1]),
         MediaProperty.valueOf(record[2]),
-        record[3].toBoolean(),
-        record[4],
-        record[5].toInt()
+        record[3].isNullOrBlank(),
+        emptyOrBlankToNull(record[3]),
+        record[4].toLong()
     )
 
     private fun recordToOrganism(record: CSVRecord) = Organism(
-        record[0].toInt(),
+        record[0].toLong(),
         record[1],
         record[2],
         record[3],
@@ -122,15 +158,28 @@ class DataImporter(private val context: Context) : KoinComponent {
         record[7],
         record[8],
         record[9],
-        record[10],
-        record[11],
-        record[12],
-        record[13],
-        record[14].toLong()
+        record[10].toLong()
+    )
+
+    private fun recordToInformation(record: CSVRecord) = Information(
+        record[0].toLong(),
+        record[1].toLong(),
+        Language.valueOf(record[2]),
+        record[3],
+        record[4],
+        emptyOrBlankToNull(record[5]),
+        record[6].toLong()
     )
 
     private fun recordToOrganismMedia(record: CSVRecord) = OrganismMedia(
-        record[0].toInt(),
-        record[1].toInt()
+        record[0].toLong(),
+        record[1].toLong()
     )
+
+    private fun recordToOrganismInformation(record: CSVRecord) = OrganismInformation(
+        record[0].toLong(),
+        record[1].toLong()
+    )
+
+    private fun emptyOrBlankToNull(v: String?): String? = if (v.isNullOrBlank()) null else v
 }

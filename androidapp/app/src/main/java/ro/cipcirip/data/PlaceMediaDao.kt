@@ -9,7 +9,7 @@ abstract class PlaceMediaDao {
     abstract fun exists(placeId: Long, mediaId: Long): Boolean
 
     @Insert
-    abstract fun insert(placeMedia: PlaceMedia): Long
+    abstract fun insert(placeMedia: PlaceMedia)
 
     @Update
     abstract fun update(placeMedia: PlaceMedia)

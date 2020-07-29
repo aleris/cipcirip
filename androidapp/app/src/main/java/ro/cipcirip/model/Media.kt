@@ -6,7 +6,7 @@ import androidx.room.*
 @Entity(
     foreignKeys = [
         ForeignKey(
-            entity = Media::class,
+            entity = Attribution::class,
             parentColumns = [Attribution.Contract.id],
             childColumns = [Media.Contract.attributionId]
         )
@@ -15,12 +15,12 @@ import androidx.room.*
 )
 data class Media(
     @PrimaryKey
-    var id: Int,
+    var id: Long,
     var type: MediaType,
     var property: MediaProperty,
-    var isLocal: Boolean,
+    var isLocalOnly: Boolean,
     var externalLink: String?,
-    var attributionId: Int
+    var attributionId: Long
 ) {
     object Contract {
         const val id = "id"
@@ -29,12 +29,12 @@ data class Media(
 }
 
 data class MediaWithAttribution(
-    var id: Int,
+    var id: Long,
     var type: MediaType,
     var property: MediaProperty,
-    var isLocal: Boolean,
+    var isLocalOnly: Boolean,
     var externalLink: String?,
-    var attributionId: Int,
+    var attributionId: Long,
     var description: String,
     var source: String
 )

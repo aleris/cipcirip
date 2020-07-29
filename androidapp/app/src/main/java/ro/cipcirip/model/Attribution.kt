@@ -7,7 +7,7 @@ import androidx.room.PrimaryKey
 @Entity
 data class Attribution(
     @PrimaryKey
-    var id: Int,
+    var id: Long,
     var description: String,
     var source: String
 ) {

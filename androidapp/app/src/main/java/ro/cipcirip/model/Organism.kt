@@ -3,14 +3,11 @@ package ro.cipcirip.model
 import androidx.room.*
 
 @Entity(indices = [Index(Organism.Contract.code)])
-data class Organism(
+data class Organism (
     @PrimaryKey
-    var id: Int,
+    var id: Long,
     var code: String,
     var nameLat: String,
-    @ColumnInfo(collate = ColumnInfo.UNICODE)
-    var nameRom: String,
-    var nameEng: String,
     var regnum: String,
     var phylum: String,
     var classis: String,
@@ -18,9 +15,6 @@ data class Organism(
     var familia: String,
     var genus: String,
     var species: String,
-    @ColumnInfo(collate = ColumnInfo.UNICODE)
-    var descriptionRom: String,
-    var descriptionEng: String,
     var viewedTimestamp: Long
 ) {
     object Contract {
@@ -31,3 +25,31 @@ data class Organism(
         fun name(language: Language) = "name$language"
     }
 }
+
+@Entity
+@Fts4(contentEntity = Organism::class, tokenizer = FtsOptions.TOKENIZER_UNICODE61)
+data class OrganismFTS(
+    @ColumnInfo(collate = ColumnInfo.UNICODE)
+    var nameLat: String
+)
+
+data class OrganismCodeAndNameOnly(
+    var id: Long,
+    var code: String,
+    var name: String
+)
+
+data class OrganismWithName(
+    var id: Long,
+    var code: String,
+    var nameLat: String,
+    var regnum: String,
+    var phylum: String,
+    var classis: String,
+    var ordo: String,
+    var familia: String,
+    var genus: String,
+    var species: String,
+    var viewedTimestamp: Long,
+    var name: String
+)

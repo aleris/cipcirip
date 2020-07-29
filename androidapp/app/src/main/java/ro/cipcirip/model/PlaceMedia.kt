@@ -20,8 +20,8 @@ import androidx.room.Index
         )
     ])
 data class PlaceMedia(
-    var placeId: Int,
-    var mediaId: Int
+    var placeId: Long,
+    var mediaId: Long
 ) {
     object Contract {
         const val placeId = "placeId"

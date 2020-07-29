@@ -9,6 +9,7 @@ class OrganismRepository: KoinComponent {
     private val mediaDao by inject<MediaDao>()
     private val attributionDao by inject<AttributionDao>()
     private val organismMediaDao by inject<OrganismMediaDao>()
+    private val informationDao by inject<InformationDao>()
 
     fun insert(organism: Organism) = organismDao.insert(organism)
 
@@ -30,20 +31,21 @@ class OrganismRepository: KoinComponent {
         organismMedia.mediaId
     )
 
-
     fun update(organism: Organism) = organismDao.update(organism)
 
     fun update(attribution: Attribution) = attributionDao.update(attribution)
 
     fun update(media: Media) = mediaDao.update(media)
 
-    fun allOrganisms() = organismDao.all()
+    fun allOrganisms(language: Language) = organismDao.all(language)
 
-    fun find(searchText: String, order: String = Organism.Contract.name(Language.Default)) =
-        organismDao.find(searchText, order)
+    fun find(searchText: String, language: Language) = organismDao.find(searchText, language)
 
-    fun get(id: Int) = organismDao.get(id)
+    fun get(id: Long) = organismDao.get(id)
 
-    fun findMediaWithAttributionWithMediaType(organismId: Int, mediaType: MediaType) =
+    fun findMediaWithAttributionWithMediaType(organismId: Long, mediaType: MediaType) =
         organismMediaDao.findMediaWithAttributionWithMediaType(organismId, mediaType)
+
+    fun getInformationWithAttribution(organismId: Long, language: Language) =
+        informationDao.getWithAttribution(organismId, language)
 }

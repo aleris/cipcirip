@@ -38,7 +38,8 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end|bottom"
-                    app:srcCompat="@drawable/ic_play_arrow_green_48dp"
+                    android:padding="4dp"
+                    app:srcCompat="@drawable/ic_play_green_48dp"
                     android:background="@null"
                     />
             <ImageButton
@@ -46,6 +47,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:layout_gravity="end|bottom"
+                    android:padding="4dp"
                     app:srcCompat="@drawable/ic_stop_red_48dp"
                     android:background="@null"
                     android:visibility="gone"

@@ -17,10 +17,13 @@ import org.koin.core.KoinComponent
 import org.koin.core.inject
 import ro.cipcirip.R
 import ro.cipcirip.SingleSongPlayer
+import ro.cipcirip.model.Language
 import ro.cipcirip.model.Organism
+import ro.cipcirip.model.OrganismCodeAndNameOnly
+import ro.cipcirip.model.OrganismWithName
 
 /**
- * A fragment representing a list of Items.
+ * A fragment representing a list of <code>OrganismCodeAndNameOnly</code>.
  * Activities containing this fragment MUST implement the
  * [OrganismListFragment.OnOrganismListItemClick] interface.
  */
@@ -49,12 +52,11 @@ class OrganismListFragment : Fragment(), KoinComponent {
     ): View? {
         val view = inflater.inflate(R.layout.organism_list_fragment, container, false)
 
-        // Set the adapter
         if (view is RecyclerView) {
             val viewAdapter = OrganismRecyclerViewAdapter(
                 singleSongPlayer,
                 object: OnOrganismListItemClick {
-                    override fun onListFragmentInteraction(organism: Organism) {
+                    override fun onListFragmentInteraction(organism: OrganismCodeAndNameOnly) {
                         view.findNavController().navigate(
                             OrganismListFragmentDirections
                                 .actionOrganismFragmentToOrganismDetailsFragment(organism.id)
@@ -67,7 +69,7 @@ class OrganismListFragment : Fragment(), KoinComponent {
                     columnCount <= 1 -> LinearLayoutManager(context)
                     else -> GridLayoutManager(context, columnCount)
                 }
-                organismListViewModel.getFilteredOrganisms().observe(viewLifecycleOwner, Observer { list ->
+                organismListViewModel.getFilteredOrganisms(Language.Rom).observe(viewLifecycleOwner, Observer { list ->
                     viewAdapter.update(list)
                     if (adapter != viewAdapter) {
                         adapter = viewAdapter
@@ -108,7 +110,7 @@ class OrganismListFragment : Fragment(), KoinComponent {
     }
 
     interface OnOrganismListItemClick {
-        fun onListFragmentInteraction(organism: Organism)
+        fun onListFragmentInteraction(organism: OrganismCodeAndNameOnly)
     }
 
     companion object {

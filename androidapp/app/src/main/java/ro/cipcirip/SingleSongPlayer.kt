@@ -4,7 +4,7 @@ import android.app.Application
 import android.media.MediaPlayer
 import mu.KotlinLogging
 import org.koin.core.KoinComponent
-import ro.cipcirip.model.Organism
+import ro.cipcirip.ui.OrganismPlayDescriptor
 import java.io.FileNotFoundException
 
 private val logger = KotlinLogging.logger {}
@@ -15,10 +15,10 @@ class SingleSongPlayer(private val mApplication: Application): KoinComponent {
 
     private var mOnStoppedHandler: SongPlayHandler? = null
     private var mOnStartedHandler: SongPlayHandler? = null
-    var currentPlayingOrganism: Organism? = null
+    var currentPlayingOrganism: OrganismPlayDescriptor? = null
         private set
 
-    fun play(organism: Organism, onStartedListener: SongPlayHandler, onStoppedListener: SongPlayHandler) {
+    fun play(organism: OrganismPlayDescriptor, onStartedListener: SongPlayHandler, onStoppedListener: SongPlayHandler) {
         if (mediaPlayer.isPlaying) {
             mediaPlayer.stop()
         }

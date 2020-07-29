@@ -21,6 +21,6 @@
             tools:layout="@layout/organism_details_fragment" >
         <argument
                 android:name="organismId"
-                app:argType="integer" />
+                app:argType="long" />
     </fragment>
 </navigation>

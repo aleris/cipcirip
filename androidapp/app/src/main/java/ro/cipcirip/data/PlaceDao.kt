@@ -20,10 +20,15 @@ abstract class PlaceDao {
     @Query("select * from Place where id = :id")
     abstract fun get(id: Long): Place
 
-    @Query("select * from Place order by :order asc")
-    abstract fun list(order: String = Place.Contract.name(Language.Default)): List<Place>
+    @Query("select * from Place order by name asc")
+    abstract fun list(): List<Place>
 
-    @Query("select * from Place order by (latitude - :latitude) * (latitude - :latitude) + (longitude - :longitude) * (longitude - :longitude) * :fudge asc limit :max")
+    @Query("""
+        select *
+        from Place
+        order by (latitude - :latitude) * (latitude - :latitude) + (longitude - :longitude) * (longitude - :longitude) * :fudge asc
+        limit :max
+        """)
     abstract fun listNearest(latitude: Double, longitude: Double, fudge: Double, max: Int): List<Place>
 
     fun listNearest(latitude: Double, longitude: Double): List<Place> {
@@ -31,11 +36,8 @@ abstract class PlaceDao {
         return listNearest(latitude, longitude, fudge, 10)
     }
 
-    @Query("select Media.* from Media inner join PlaceMedia on Media.id = PlaceMedia.mediaId inner join Place on PlaceMedia.placeId = Place.id where Place.id = :placeId and Media.type = :mediaType")
-    abstract fun listMediaOfType(placeId: Long, mediaType: String): List<Media>
+    @Query("select Place.* from Place inner join PlaceFTS4 on Place.id = PlaceFTS4.docid where PlaceFTS4 match :searchText order by name asc")
+    abstract fun find(searchText: String): List<Place>
 
-    @Query("select Place.* from Place inner join PlaceFTS4 on Place.id = PlaceFTS4.docid where PlaceFTS4 match :searchText order by :order asc")
-    abstract fun find(searchText: String, order: String): List<Place>
-
-    fun findWildcard(searchText: String, order: String = Place.Contract.name(Language.Default)): List<Place> = find("*$searchText*", order)
+    fun findWildcard(searchText: String): List<Place> = find("*$searchText*")
 }

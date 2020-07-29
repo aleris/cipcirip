@@ -14,23 +14,21 @@ import kotlinx.android.synthetic.main.organism_list_item_fragment.view.*
 import ro.cipcirip.R
 import ro.cipcirip.SingleSongPlayer
 import ro.cipcirip.model.Organism
+import ro.cipcirip.model.OrganismCodeAndNameOnly
+import ro.cipcirip.model.OrganismWithName
 import ro.cipcirip.ui.OrganismListFragment.OnOrganismListItemClick
 
-/**
- * [RecyclerView.Adapter] that can display a [DummyItem] and makes a call to the
- * specified [OnOrganismListItemClick].
- */
 class OrganismRecyclerViewAdapter(
     private val mSingleSongPlayer: SingleSongPlayer,
     private val mOrganismItemOnListItemClick: OnOrganismListItemClick?
 ) : RecyclerView.Adapter<OrganismRecyclerViewAdapter.ViewHolder>() {
 
-    private val mValues = ArrayList<Organism>()
+    private val mValues = ArrayList<OrganismCodeAndNameOnly>()
     private val mOnClickListener: View.OnClickListener
 
     init {
         mOnClickListener = View.OnClickListener { v ->
-            val item = v.tag as Organism
+            val item = v.tag as OrganismCodeAndNameOnly
             mOrganismItemOnListItemClick?.onListFragmentInteraction(item)
         }
     }
@@ -44,9 +42,9 @@ class OrganismRecyclerViewAdapter(
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
         val organism = mValues[position]
 
-        showAsPlaying(holder, organism == mSingleSongPlayer.currentPlayingOrganism)
+        showAsPlaying(holder, organism.id == mSingleSongPlayer.currentPlayingOrganism?.id)
 
-        holder.mNameView.text = organism.nameRom // "${item.code} ${item.nameRom}"
+        holder.mNameView.text = organism.name // "${item.code} ${item.nameRom}"
         Glide
             .with(holder.mView.context)
             .load(
@@ -68,7 +66,7 @@ class OrganismRecyclerViewAdapter(
         holder.mPlayButton.setOnClickListener {
             holder.mPlayButton.visibility = View.INVISIBLE
             mSingleSongPlayer.play(
-                organism,
+                OrganismPlayDescriptor(organism),
                 {
                     showAsPlaying(holder, true)
                 },
@@ -93,7 +91,7 @@ class OrganismRecyclerViewAdapter(
 
     override fun getItemCount(): Int = mValues.size
 
-    fun update(list: List<Organism>) {
+    fun update(list: List<OrganismCodeAndNameOnly>) {
         this.mValues.clear()
         this.mValues.addAll(list)
         this.notifyDataSetChanged()

@@ -16,7 +16,7 @@ abstract class MediaDao {
     abstract fun update(media: Media)
 
     @Query("select exists (select 1 from Media where id = :id)")
-    abstract fun exists(id: Int): Boolean
+    abstract fun exists(id: Long): Boolean
 
     @Query("select * from Media")
     abstract fun all(): LiveData<List<Media>>

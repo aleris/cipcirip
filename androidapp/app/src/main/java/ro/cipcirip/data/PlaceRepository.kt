@@ -16,7 +16,7 @@ class PlaceRepository: KoinComponent {
         insertMedia(photoMedia, place.id)
     }
 
-    private fun insertMedia(media: Media, placeId: Int) {
+    private fun insertMedia(media: Media, placeId: Long) {
         mediaDao.insert(media)
         val placeMedia = PlaceMedia(placeId, media.id)
         placeMediaDao.insert(placeMedia)

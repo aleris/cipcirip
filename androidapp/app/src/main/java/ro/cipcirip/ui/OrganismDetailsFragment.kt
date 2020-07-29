@@ -3,6 +3,9 @@ package ro.cipcirip.ui
 import android.graphics.drawable.ColorDrawable
 import android.net.Uri
 import android.os.Bundle
+import android.text.Spannable
+import android.text.SpannableString
+import android.text.style.AbsoluteSizeSpan
 import android.view.*
 import android.widget.ImageButton
 import android.widget.ImageView
@@ -17,15 +20,19 @@ import com.bumptech.glide.Glide
 import org.koin.android.ext.android.inject
 import ro.cipcirip.R
 import ro.cipcirip.SingleSongPlayer
-import ro.cipcirip.model.MediaWithAttribution
+import ro.cipcirip.model.*
+import java.util.regex.Pattern
 
+
+data class OrganismPlayDescriptor (
+    var id: Long,
+    var code: String
+) {
+    constructor(organism: Organism): this(organism.id, organism.code)
+    constructor(organism: OrganismCodeAndNameOnly): this(organism.id, organism.code)
+}
 
 class OrganismDetailsFragment : Fragment() {
-
-    companion object {
-        fun newInstance() = OrganismDetailsFragment()
-    }
-
     private lateinit var viewModel: OrganismDetailsViewModel
     private val singleSongPlayer by inject<SingleSongPlayer>()
 
@@ -45,10 +52,12 @@ class OrganismDetailsFragment : Fragment() {
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
-        val organismId = args.organismId
+        viewModel.setOrganismId(args.organismId)
+        loadIntoView(view)
+    }
+
+    private fun loadIntoView(view: View) {
         viewModel.getOrganism().observe(viewLifecycleOwner, Observer { organism ->
-            (activity as AppCompatActivity?)?.supportActionBar?.title = organism.nameRom
-            view.findViewById<TextView>(R.id.name).text = organism.nameRom
             view.findViewById<TextView>(R.id.name_lat).text = organism.nameLat
             val image = view.findViewById<ImageView>(R.id.image)
             Glide
@@ -62,11 +71,10 @@ class OrganismDetailsFragment : Fragment() {
                     )
                 )
                 .into(image)
-            view.findViewById<TextView>(R.id.description).text = organism.descriptionRom
 
-            showAsPlaying(view, organism == singleSongPlayer.currentPlayingOrganism)
+            showAsPlaying(view, organism.id == singleSongPlayer.currentPlayingOrganism?.id)
             view.findViewById<ImageButton>(R.id.play).setOnClickListener {
-                singleSongPlayer.play(organism, {
+                singleSongPlayer.play(OrganismPlayDescriptor(organism), {
                     showAsPlaying(view, true)
                 }, {
                     showAsPlaying(view, false)
@@ -77,6 +85,19 @@ class OrganismDetailsFragment : Fragment() {
                 showAsPlaying(view, false)
             }
         })
+
+        viewModel.getInformationWithAttribution()
+            .observe(viewLifecycleOwner, Observer { informationWithAttribution ->
+                informationWithAttribution.let {
+                    (activity as AppCompatActivity?)?.supportActionBar?.title =
+                        informationWithAttribution.name
+                    view.findViewById<TextView>(R.id.name).text = informationWithAttribution.name
+                    view.findViewById<TextView>(R.id.description).text =
+                        processTextParagraphs(informationWithAttribution.description)
+                    view.findViewById<TextView>(R.id.description_attribution).text =
+                        getAttributionText(informationWithAttribution)
+                }
+            })
 
         viewModel.getMediaPaintWithAttribution().observe(viewLifecycleOwner, Observer { mediaList ->
             mediaList.firstOrNull().let {
@@ -89,14 +110,22 @@ class OrganismDetailsFragment : Fragment() {
                 view.findViewById<TextView>(R.id.sound_attribution).text = getAttributionText(it)
             }
         })
+    }
 
-        viewModel.getMediaTextWithAttribution().observe(viewLifecycleOwner, Observer { mediaList ->
-            mediaList.firstOrNull().let {
-                view.findViewById<TextView>(R.id.description_attribution).text = getAttributionText(it)
-            }
-        })
+    private fun processTextParagraphs(text: String): SpannableString {
+        val formattedText = text.replace("\n", "\n\n")
+        val spannableString = SpannableString(formattedText)
 
-        viewModel.setOrganismId(organismId)
+        val matcher = Pattern.compile("\n\n").matcher(formattedText)
+        while (matcher.find()) {
+            spannableString.setSpan(
+                AbsoluteSizeSpan(10, true),
+                matcher.start() + 1,
+                matcher.end(),
+                Spannable.SPAN_EXCLUSIVE_EXCLUSIVE
+            )
+        }
+        return spannableString
     }
 
     private fun showAsPlaying(view: View, playing: Boolean) {
@@ -112,5 +141,9 @@ class OrganismDetailsFragment : Fragment() {
 
     private fun getAttributionText(it: MediaWithAttribution?): String {
         return it?.let { "• ${it.description} (${it.source})" }.orEmpty()
+    }
+
+    private fun getAttributionText(it: InformationWithAttribution?): String {
+        return it?.let { "• ${it.attributionDescription} (${it.attributionSource})" }.orEmpty()
     }
 }
