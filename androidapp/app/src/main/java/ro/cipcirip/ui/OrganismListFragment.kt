@@ -18,9 +18,8 @@ import org.koin.core.inject
 import ro.cipcirip.R
 import ro.cipcirip.SingleSongPlayer
 import ro.cipcirip.model.Language
-import ro.cipcirip.model.Organism
 import ro.cipcirip.model.OrganismCodeAndNameOnly
-import ro.cipcirip.model.OrganismWithName
+
 
 /**
  * A fragment representing a list of <code>OrganismCodeAndNameOnly</code>.
@@ -84,6 +83,8 @@ class OrganismListFragment : Fragment(), KoinComponent {
         val supportActionBar = (activity as AppCompatActivity?)?.supportActionBar ?: return
         supportActionBar.show()
         supportActionBar.title = resources.getString(R.string.app_name)
+        supportActionBar.setDisplayShowHomeEnabled(true)
+        supportActionBar.setIcon(R.drawable.dw_logo_cipcirip)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {

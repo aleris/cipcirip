@@ -13,9 +13,7 @@ import com.bumptech.glide.Glide
 import kotlinx.android.synthetic.main.organism_list_item_fragment.view.*
 import ro.cipcirip.R
 import ro.cipcirip.SingleSongPlayer
-import ro.cipcirip.model.Organism
 import ro.cipcirip.model.OrganismCodeAndNameOnly
-import ro.cipcirip.model.OrganismWithName
 import ro.cipcirip.ui.OrganismListFragment.OnOrganismListItemClick
 
 class OrganismRecyclerViewAdapter(
@@ -52,7 +50,7 @@ class OrganismRecyclerViewAdapter(
             )
             .placeholder(
                 ColorDrawable(
-                    ContextCompat.getColor(holder.mImageView.context, R.color.placeholderColor)
+                    ContextCompat.getColor(holder.mImageView.context, R.color.colorPlaceholder)
                 )
             )
             .into(holder.mImageView)
