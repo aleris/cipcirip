@@ -1,0 +1,639 @@
+{
+  "formatVersion": 1,
+  "database": {
+    "version": 3,
+    "identityHash": "3b27af0e4e09cafac2bae95d78dd3aae",
+    "entities": [
+      {
+        "tableName": "Attribution",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `description` TEXT NOT NULL, `source` TEXT NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "source",
+            "columnName": "source",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "Media",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `type` INTEGER NOT NULL, `property` INTEGER NOT NULL, `isLocalOnly` INTEGER NOT NULL, `externalLink` TEXT, `attributionId` INTEGER NOT NULL, PRIMARY KEY(`id`), FOREIGN KEY(`attributionId`) REFERENCES `Attribution`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "type",
+            "columnName": "type",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "property",
+            "columnName": "property",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "isLocalOnly",
+            "columnName": "isLocalOnly",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "externalLink",
+            "columnName": "externalLink",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "attributionId",
+            "columnName": "attributionId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_Media_attributionId",
+            "unique": false,
+            "columnNames": [
+              "attributionId"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Media_attributionId` ON `${TABLE_NAME}` (`attributionId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Attribution",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "attributionId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "Organism",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `code` TEXT NOT NULL, `nameLat` TEXT NOT NULL, `regnum` TEXT NOT NULL, `phylum` TEXT NOT NULL, `classis` TEXT NOT NULL, `ordo` TEXT NOT NULL, `familia` TEXT NOT NULL, `genus` TEXT NOT NULL, `species` TEXT NOT NULL, `viewedTimestamp` INTEGER NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "code",
+            "columnName": "code",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "nameLat",
+            "columnName": "nameLat",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "regnum",
+            "columnName": "regnum",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "phylum",
+            "columnName": "phylum",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "classis",
+            "columnName": "classis",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "ordo",
+            "columnName": "ordo",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "familia",
+            "columnName": "familia",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "genus",
+            "columnName": "genus",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "species",
+            "columnName": "species",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "viewedTimestamp",
+            "columnName": "viewedTimestamp",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_Organism_code",
+            "unique": false,
+            "columnNames": [
+              "code"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Organism_code` ON `${TABLE_NAME}` (`code`)"
+          }
+        ],
+        "foreignKeys": []
+      },
+      {
+        "ftsVersion": "FTS4",
+        "ftsOptions": {
+          "tokenizer": "unicode61",
+          "tokenizerArgs": [],
+          "contentTable": "Organism",
+          "languageIdColumnName": "",
+          "matchInfo": "FTS4",
+          "notIndexedColumns": [],
+          "prefixSizes": [],
+          "preferredOrder": "ASC"
+        },
+        "contentSyncTriggers": [
+          "CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_OrganismFTS_BEFORE_UPDATE BEFORE UPDATE ON `Organism` BEGIN DELETE FROM `OrganismFTS` WHERE `docid`=OLD.`rowid`; END",
+          "CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_OrganismFTS_BEFORE_DELETE BEFORE DELETE ON `Organism` BEGIN DELETE FROM `OrganismFTS` WHERE `docid`=OLD.`rowid`; END",
+          "CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_OrganismFTS_AFTER_UPDATE AFTER UPDATE ON `Organism` BEGIN INSERT INTO `OrganismFTS`(`docid`, `nameLat`) VALUES (NEW.`rowid`, NEW.`nameLat`); END",
+          "CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_OrganismFTS_AFTER_INSERT AFTER INSERT ON `Organism` BEGIN INSERT INTO `OrganismFTS`(`docid`, `nameLat`) VALUES (NEW.`rowid`, NEW.`nameLat`); END"
+        ],
+        "tableName": "OrganismFTS",
+        "createSql": "CREATE VIRTUAL TABLE IF NOT EXISTS `${TABLE_NAME}` USING FTS4(`nameLat` TEXT NOT NULL COLLATE UNICODE, tokenize=unicode61, content=`Organism`)",
+        "fields": [
+          {
+            "fieldPath": "nameLat",
+            "columnName": "nameLat",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "OrganismInformation",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`organismId` INTEGER NOT NULL, `informationId` INTEGER NOT NULL, PRIMARY KEY(`organismId`, `informationId`), FOREIGN KEY(`organismId`) REFERENCES `Organism`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`informationId`) REFERENCES `Information`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "organismId",
+            "columnName": "organismId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "informationId",
+            "columnName": "informationId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "organismId",
+            "informationId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_OrganismInformation_informationId",
+            "unique": false,
+            "columnNames": [
+              "informationId"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_OrganismInformation_informationId` ON `${TABLE_NAME}` (`informationId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Organism",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "organismId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          },
+          {
+            "table": "Information",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "informationId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "Information",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `organismId` INTEGER NOT NULL, `language` INTEGER NOT NULL, `name` TEXT NOT NULL COLLATE UNICODE, `description` TEXT NOT NULL COLLATE UNICODE, `externalLink` TEXT, `attributionId` INTEGER NOT NULL, PRIMARY KEY(`id`), FOREIGN KEY(`attributionId`) REFERENCES `Attribution`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "organismId",
+            "columnName": "organismId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "language",
+            "columnName": "language",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "description",
+            "columnName": "description",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "externalLink",
+            "columnName": "externalLink",
+            "affinity": "TEXT",
+            "notNull": false
+          },
+          {
+            "fieldPath": "attributionId",
+            "columnName": "attributionId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_Information_attributionId",
+            "unique": false,
+            "columnNames": [
+              "attributionId"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_Information_attributionId` ON `${TABLE_NAME}` (`attributionId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Attribution",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "attributionId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "ftsVersion": "FTS4",
+        "ftsOptions": {
+          "tokenizer": "unicode61",
+          "tokenizerArgs": [],
+          "contentTable": "Information",
+          "languageIdColumnName": "",
+          "matchInfo": "FTS4",
+          "notIndexedColumns": [],
+          "prefixSizes": [],
+          "preferredOrder": "ASC"
+        },
+        "contentSyncTriggers": [
+          "CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_InformationFTS_BEFORE_UPDATE BEFORE UPDATE ON `Information` BEGIN DELETE FROM `InformationFTS` WHERE `docid`=OLD.`rowid`; END",
+          "CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_InformationFTS_BEFORE_DELETE BEFORE DELETE ON `Information` BEGIN DELETE FROM `InformationFTS` WHERE `docid`=OLD.`rowid`; END",
+          "CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_InformationFTS_AFTER_UPDATE AFTER UPDATE ON `Information` BEGIN INSERT INTO `InformationFTS`(`docid`, `name`) VALUES (NEW.`rowid`, NEW.`name`); END",
+          "CREATE TRIGGER IF NOT EXISTS room_fts_content_sync_InformationFTS_AFTER_INSERT AFTER INSERT ON `Information` BEGIN INSERT INTO `InformationFTS`(`docid`, `name`) VALUES (NEW.`rowid`, NEW.`name`); END"
+        ],
+        "tableName": "InformationFTS",
+        "createSql": "CREATE VIRTUAL TABLE IF NOT EXISTS `${TABLE_NAME}` USING FTS4(`name` TEXT NOT NULL COLLATE UNICODE, tokenize=unicode61, content=`Information`)",
+        "fields": [
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "OrganismMedia",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`organismId` INTEGER NOT NULL, `mediaId` INTEGER NOT NULL, PRIMARY KEY(`organismId`, `mediaId`), FOREIGN KEY(`organismId`) REFERENCES `Organism`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`mediaId`) REFERENCES `Media`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "organismId",
+            "columnName": "organismId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mediaId",
+            "columnName": "mediaId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "organismId",
+            "mediaId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_OrganismMedia_mediaId",
+            "unique": false,
+            "columnNames": [
+              "mediaId"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_OrganismMedia_mediaId` ON `${TABLE_NAME}` (`mediaId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Organism",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "organismId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          },
+          {
+            "table": "Media",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "mediaId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "Place",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`id` INTEGER NOT NULL, `name` TEXT NOT NULL, `region` TEXT NOT NULL, `latitude` REAL NOT NULL, `longitude` REAL NOT NULL, `radius` REAL NOT NULL, PRIMARY KEY(`id`))",
+        "fields": [
+          {
+            "fieldPath": "id",
+            "columnName": "id",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "name",
+            "columnName": "name",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "region",
+            "columnName": "region",
+            "affinity": "TEXT",
+            "notNull": true
+          },
+          {
+            "fieldPath": "latitude",
+            "columnName": "latitude",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "longitude",
+            "columnName": "longitude",
+            "affinity": "REAL",
+            "notNull": true
+          },
+          {
+            "fieldPath": "radius",
+            "columnName": "radius",
+            "affinity": "REAL",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "id"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [],
+        "foreignKeys": []
+      },
+      {
+        "tableName": "PlaceMedia",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`placeId` INTEGER NOT NULL, `mediaId` INTEGER NOT NULL, PRIMARY KEY(`placeId`, `mediaId`), FOREIGN KEY(`placeId`) REFERENCES `Place`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`mediaId`) REFERENCES `Media`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "placeId",
+            "columnName": "placeId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "mediaId",
+            "columnName": "mediaId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "placeId",
+            "mediaId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_PlaceMedia_mediaId",
+            "unique": false,
+            "columnNames": [
+              "mediaId"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_PlaceMedia_mediaId` ON `${TABLE_NAME}` (`mediaId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Place",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "placeId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          },
+          {
+            "table": "Media",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "mediaId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      },
+      {
+        "tableName": "OrganismPlace",
+        "createSql": "CREATE TABLE IF NOT EXISTS `${TABLE_NAME}` (`organismId` INTEGER NOT NULL, `placeId` INTEGER NOT NULL, PRIMARY KEY(`organismId`, `placeId`), FOREIGN KEY(`organismId`) REFERENCES `Organism`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION , FOREIGN KEY(`placeId`) REFERENCES `Place`(`id`) ON UPDATE NO ACTION ON DELETE NO ACTION )",
+        "fields": [
+          {
+            "fieldPath": "organismId",
+            "columnName": "organismId",
+            "affinity": "INTEGER",
+            "notNull": true
+          },
+          {
+            "fieldPath": "placeId",
+            "columnName": "placeId",
+            "affinity": "INTEGER",
+            "notNull": true
+          }
+        ],
+        "primaryKey": {
+          "columnNames": [
+            "organismId",
+            "placeId"
+          ],
+          "autoGenerate": false
+        },
+        "indices": [
+          {
+            "name": "index_OrganismPlace_placeId",
+            "unique": false,
+            "columnNames": [
+              "placeId"
+            ],
+            "createSql": "CREATE INDEX IF NOT EXISTS `index_OrganismPlace_placeId` ON `${TABLE_NAME}` (`placeId`)"
+          }
+        ],
+        "foreignKeys": [
+          {
+            "table": "Organism",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "organismId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          },
+          {
+            "table": "Place",
+            "onDelete": "NO ACTION",
+            "onUpdate": "NO ACTION",
+            "columns": [
+              "placeId"
+            ],
+            "referencedColumns": [
+              "id"
+            ]
+          }
+        ]
+      }
+    ],
+    "views": [],
+    "setupQueries": [
+      "CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)",
+      "INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '3b27af0e4e09cafac2bae95d78dd3aae')"
+    ]
+  }
+}

@@ -34,8 +34,8 @@ private val logger = KotlinLogging.logger {}
 @TypeConverters(MediaTypeConverter::class, MediaPropertyConverter::class, LanguageConverter::class)
 abstract class AppDatabase: RoomDatabase() {
     companion object {
-        private const val DATABASE_NAME = "cipcirip.db"
-        const val VERSION = 3
+        private const val DATABASE_NAME = "organism.db"
+        const val VERSION = 1
 
         fun buildDatabase(context: Context, dataImporter: DataImporter): AppDatabase {
             logger.info { "Building database, data directory: ${context.applicationContext.applicationInfo.dataDir}" }

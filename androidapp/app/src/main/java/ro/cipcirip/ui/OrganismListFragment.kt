@@ -84,6 +84,7 @@ class OrganismListFragment : Fragment(), KoinComponent {
         supportActionBar.show()
         supportActionBar.title = resources.getString(R.string.app_name)
         supportActionBar.setDisplayShowHomeEnabled(true)
+        supportActionBar.setDisplayHomeAsUpEnabled(false)
         supportActionBar.setIcon(R.drawable.dw_logo_cipcirip)
     }
 

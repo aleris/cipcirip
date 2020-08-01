@@ -9,7 +9,7 @@
     </style>
 
     <style name="ThemeOverlay.Actionbar" parent="ThemeOverlay.MaterialComponents.ActionBar.Surface" >
-        <item name="android:textColorPrimary">@color/colorWhite</item>
+        <item name="android:background">@color/colorWhite</item>
     </style>
 
     <style name="SearchView" parent="Widget.AppCompat.Light.SearchView">

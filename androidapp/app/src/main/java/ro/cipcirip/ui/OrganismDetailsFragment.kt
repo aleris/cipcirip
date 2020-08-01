@@ -20,7 +20,10 @@ import com.bumptech.glide.Glide
 import org.koin.android.ext.android.inject
 import ro.cipcirip.R
 import ro.cipcirip.SingleSongPlayer
-import ro.cipcirip.model.*
+import ro.cipcirip.model.InformationWithAttribution
+import ro.cipcirip.model.MediaWithAttribution
+import ro.cipcirip.model.Organism
+import ro.cipcirip.model.OrganismCodeAndNameOnly
 import java.util.regex.Pattern
 
 
@@ -56,7 +59,8 @@ class OrganismDetailsFragment : Fragment() {
         loadIntoView(view)
 
         val supportActionBar = (activity as AppCompatActivity?)?.supportActionBar ?: return
-        supportActionBar.hide()
+        supportActionBar.setDisplayShowHomeEnabled(false)
+        supportActionBar.setDisplayHomeAsUpEnabled(true)
     }
 
     private fun loadIntoView(view: View) {
@@ -76,13 +80,13 @@ class OrganismDetailsFragment : Fragment() {
 
         viewModel.getMediaPaintWithAttribution().observe(viewLifecycleOwner, Observer { mediaList ->
             mediaList.firstOrNull().let {
-                view.findViewById<TextView>(R.id.image_attribution).text = getAttributionText(it)
+                view.findViewById<TextView>(R.id.image_attribution).text = getAttributionText("\uD83D\uDDBC", it)
             }
         })
 
         viewModel.getMediaSoundWithAttribution().observe(viewLifecycleOwner, Observer { mediaList ->
             mediaList.firstOrNull().let {
-                view.findViewById<TextView>(R.id.sound_attribution).text = getAttributionText(it)
+                view.findViewById<TextView>(R.id.sound_attribution).text = getAttributionText("\uD83C\uDFB5", it)
             }
         })
     }
@@ -93,11 +97,11 @@ class OrganismDetailsFragment : Fragment() {
     ) {
         (activity as AppCompatActivity?)?.supportActionBar?.title =
             it.name
-        view.findViewById<TextView>(R.id.name).text = it.name
+//        view.findViewById<TextView>(R.id.name).text = it.name
         view.findViewById<TextView>(R.id.description).text =
             processTextParagraphs(it.description)
         view.findViewById<TextView>(R.id.description_attribution).text =
-            getAttributionText(it)
+            getAttributionText("\uD83D\uDCC4", it)
     }
 
     private fun loadOrganismIntoView(view: View, organism: Organism) {
@@ -156,11 +160,21 @@ class OrganismDetailsFragment : Fragment() {
         menu.findItem(R.id.action_search)?.isVisible = false
     }
 
-    private fun getAttributionText(it: MediaWithAttribution?): String {
-        return it?.let { "• ${it.description} (${it.source})" }.orEmpty()
+    private fun getAttributionText(prefix: String, it: MediaWithAttribution?): String {
+        return it?.let { "$prefix ${it.description} (${it.source})" }.orEmpty()
     }
 
-    private fun getAttributionText(it: InformationWithAttribution?): String {
-        return it?.let { "• ${it.attributionDescription} (${it.attributionSource})" }.orEmpty()
+    private fun getAttributionText(prefix: String, it: InformationWithAttribution?): String {
+        return it?.let { "$prefix ${it.attributionDescription} (${it.attributionSource})" }.orEmpty()
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        if (item.itemId == android.R.id.home) {
+            if (parentFragmentManager.backStackEntryCount > 0) {
+                parentFragmentManager.popBackStack()
+                return true
+            }
+        }
+        return super.onOptionsItemSelected(item)
     }
 }

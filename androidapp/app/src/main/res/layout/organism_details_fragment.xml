@@ -48,19 +48,19 @@
                     app:layout_constraintEnd_toEndOf="parent"
                     app:srcCompat="@drawable/ic_stop_red_48dp" />
 
-            <TextView
-                    android:id="@+id/name"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="@dimen/additional_horizontal_margin"
-                    android:layout_marginStart="@dimen/additional_horizontal_margin"
-                    android:layout_marginEnd="@dimen/additional_horizontal_margin"
-                    android:ellipsize="end"
-                    android:maxLines="1"
-                    android:scrollHorizontally="true"
-                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"
-                    app:layout_constraintTop_toBottomOf="@+id/image"
-                    tools:text="Name" />
+<!--            <TextView-->
+<!--                    android:id="@+id/name"-->
+<!--                    android:layout_width="match_parent"-->
+<!--                    android:layout_height="wrap_content"-->
+<!--                    android:layout_marginTop="@dimen/additional_horizontal_margin"-->
+<!--                    android:layout_marginStart="@dimen/additional_horizontal_margin"-->
+<!--                    android:layout_marginEnd="@dimen/additional_horizontal_margin"-->
+<!--                    android:ellipsize="end"-->
+<!--                    android:maxLines="1"-->
+<!--                    android:scrollHorizontally="true"-->
+<!--                    android:textAppearance="@style/TextAppearance.MaterialComponents.Headline4"-->
+<!--                    app:layout_constraintTop_toBottomOf="@+id/image"-->
+<!--                    tools:text="Name" />-->
 
             <TextView
                     android:id="@+id/name_lat"
@@ -71,7 +71,7 @@
                     android:maxLines="1"
                     android:scrollHorizontally="true"
                     android:textAppearance="@style/TextAppearance.MaterialComponents.Subtitle1"
-                    app:layout_constraintTop_toBottomOf="@+id/name"
+                    app:layout_constraintTop_toBottomOf="@+id/image"
                     tools:text="Name Latin" />
 
             <TextView

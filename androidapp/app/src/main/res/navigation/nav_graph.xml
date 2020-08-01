@@ -22,5 +22,8 @@
         <argument
                 android:name="organismId"
                 app:argType="long" />
+        <action
+                android:id="@+id/action_organismDetailsFragment_to_organismListFragment"
+                app:destination="@id/organismListFragment" />
     </fragment>
 </navigation>
