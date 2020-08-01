@@ -35,7 +35,7 @@ private val logger = KotlinLogging.logger {}
 abstract class AppDatabase: RoomDatabase() {
     companion object {
         private const val DATABASE_NAME = "cipcirip.db"
-        const val VERSION = 1
+        const val VERSION = 3
 
         fun buildDatabase(context: Context, dataImporter: DataImporter): AppDatabase {
             logger.info { "Building database, data directory: ${context.applicationContext.applicationInfo.dataDir}" }
