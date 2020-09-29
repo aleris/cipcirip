@@ -2,6 +2,8 @@
 
 Android App with the catalog of birds from Romania
 
+<img src="https://github.com/aleris/cipcirip/blob/master/assets/screenshots/1.png" alt="App Screenshot" width="200"/>
+
 The app is published in Google Play Store at:
 
 https://play.google.com/store/apps/details?id=ro.cipcirip
