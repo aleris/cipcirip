@@ -15,9 +15,10 @@ androidapp - the android app
 
 # Data Sources
 
-- Pictures - extracted from Romanian Bird Atlas 2015 (https://monitorizareapasarilor.cndd.ro/atlasul_pasarilor.html)
-- Sounds - www.xeno-canto.org
-- Texts - scrapped from Wikipedia and manually updated from other sources
+- Pictures - extracted from Romanian Bird Atlas 2015 (https://monitorizareapasarilor.cndd.ro/atlasul_pasarilor.html).
+It uses a simple algorithm to detect the picture in the PDF and avoids the texts.
+- Sounds - www.xeno-canto.org (files automatically scrapped based on index and some rules)
+- Texts - scrapped from Wikipedia and manually updated from other sources.
 
 The catalog main index is also based on Romanian Bird Atlas 2015.
 
